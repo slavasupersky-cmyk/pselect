@@ -52,11 +52,10 @@ function detailHTML(o){
       <span class="tag"><i class="st-${o.s}"></i>${SN[o.s]}</span>
       <div class="price">${fmt(o.p)} млн ₽ <span class="mute" style="font-size:14px">· ${fmt(Math.round(o.p*1e6/o.m/1000))} тыс. ₽/м²</span></div>
       <div class="params"><div><small>Площадь</small>${o.m} м²</div><div><small>Спален</small>${o.r}</div><div><small>Этаж</small>${o.f} из ${o.ff}</div><div><small>Класс дома</small>${o.c}</div><div><small>Потолки</small>${o.h||'—'}</div><div><small>Состояние</small>${o.st}</div></div>
-      <p class="mute" style="font-size:14px">${o.t||(gone?'Объект ушёл с рынка на этой неделе. Могу показать похожие, которые ещё готовятся к выходу.':'Проверен: документы, история прав, перепланировки, дом. Презентация и точный адрес — после запроса.')}</p>
+      <p class="mute" style="font-size:14px">${o.t||(gone?'Объект ушёл с рынка на этой неделе. Могу показать похожие, которые ещё готовятся к выходу.':'Проверен: документы, история прав, перепланировки, дом. Презентация с адресом и условиями приходит лично от Елены.')}</p>
       <div class="acts">${gone?`<a class="btn" href="#kupit">Подобрать похожие</a>`:`
-        <button class="btn" data-lead="Запросить подробности">Запросить подробности</button>
-        <button class="btn ghost" data-lead="Получить презентацию">Получить презентацию</button>
-        <button class="btn ghost" data-lead="Записаться на просмотр">Узнать условия / записаться на просмотр</button>`}</div>
+        <button class="btn" data-lead="Получить презентацию">Получить презентацию</button>
+        <button class="btn ghost" data-lead="Обсудить вариант">Обсудить вариант</button>`}</div>
     </div></div>`;
 }
 

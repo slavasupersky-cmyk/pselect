@@ -2,31 +2,31 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap">
 <style>
 :root{
-  --bg:#E4DDD4; --bg2:#ECE6DE; --surface:#F3EFE9; --ink:#1F1B17; --ink2:#3E3731; --mute:#77706A; --line:#CFC6BB; --line2:#DCD5CC;
-  --bronze:#8A6B47; --bronze2:#B79A70; --bronze-soft:rgba(138,107,71,.12);
-  --new:#3F7D4E; --gone:#B8871E; --was:#9A928A; --park:#DCD9CB; --water:#CFC9C0;
+  --bg:#F3F0EB; --bg2:#F8F6F2; --surface:#FCFBF9; --ink:#1B1916; --ink2:#3A3632; --mute:#7A756E; --line:#DCD7CF; --line2:#E9E5DF;
+  --bronze:#96775A; --bronze2:#C7AE8B; --bronze-soft:rgba(150,119,90,.10); --veil:rgba(243,240,235,.82); --veil2:rgba(243,240,235,.58);
+  --new:#4A8A5A; --gone:#C2952E; --was:#A8A19A; --park:#E6E4DA; --water:#D6D9DA;
   --show-light:block; --show-dark:none;
-  --g1:#C9A97E; --g2:#8E6F4B; --g3:#5E4630;
+  --g1:#D6BC95; --g2:#A98A63; --g3:#7C6146;
   --shadow:0 18px 50px rgba(50,40,30,.14);
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     color-scheme:dark;
-    --bg:#1A1917; --bg2:#1F1D1B; --surface:#26231F; --ink:#ECE5DB; --ink2:#CFC6BA; --mute:#9A9187; --line:#3A3631; --line2:#2E2B27;
-    --bronze:#C9AC80; --bronze2:#8E7451; --bronze-soft:rgba(201,172,128,.12);
-    --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#252A24; --water:#33302C;
+    --bg:#151413; --bg2:#1B1A18; --surface:#221F1D; --ink:#EDE8E0; --ink2:#D0C9BF; --mute:#958E85; --line:#363330; --line2:#2B2926;
+    --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52);
+    --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#20241F; --water:#2A2F33;
     --show-light:none; --show-dark:block;
-    --g1:#E2C89E; --g2:#B8976A; --g3:#8A6C48;
+    --g1:#E8D3AE; --g2:#C2A57C; --g3:#93755A;
     --shadow:0 18px 50px rgba(0,0,0,.45);
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#1A1917; --bg2:#1F1D1B; --surface:#26231F; --ink:#ECE5DB; --ink2:#CFC6BA; --mute:#9A9187; --line:#3A3631; --line2:#2E2B27;
-  --bronze:#C9AC80; --bronze2:#8E7451; --bronze-soft:rgba(201,172,128,.12);
-  --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#252A24; --water:#33302C;
+  --bg:#151413; --bg2:#1B1A18; --surface:#221F1D; --ink:#EDE8E0; --ink2:#D0C9BF; --mute:#958E85; --line:#363330; --line2:#2B2926;
+  --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52);
+  --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#20241F; --water:#2A2F33;
   --show-light:none; --show-dark:block;
-  --g1:#E2C89E; --g2:#B8976A; --g3:#8A6C48;
+  --g1:#E8D3AE; --g2:#C2A57C; --g3:#93755A;
   --shadow:0 18px 50px rgba(0,0,0,.45);
 }
 *{box-sizing:border-box}
@@ -55,9 +55,15 @@ p{margin:0}
 nav.main{display:flex;gap:4px}
 nav.main a{text-decoration:none;font-size:13px;letter-spacing:.06em;padding:8px 12px;border-radius:2px;color:var(--ink2)}
 nav.main a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--bronze)}
+.top .wrap{gap:12px}
 nav.main a:hover{color:var(--ink)}
-.top .call{display:none}
-@media(max-width:760px){nav.main{display:none}.top .call{display:inline-flex}}
+.topright{display:flex;gap:10px;align-items:center}
+.tel{text-decoration:none;font-size:14px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink);padding:8px 12px;border:1px solid var(--line);border-radius:100px;white-space:nowrap}
+.tel:hover{border-color:var(--bronze);color:var(--bronze)}
+.tel-short{display:none}
+@media(max-width:760px){nav.main{display:none}.tel-full{display:none}.tel-short{display:inline}}
+@media(max-width:1000px) and (min-width:761px){nav.main a{padding:8px 9px}}
+nav.mobile .mtel{color:var(--bronze);font-weight:500}
 .burger{display:none;background:none;border:1px solid var(--line);border-radius:2px;color:var(--ink);padding:8px 10px;font:inherit;font-size:13px}
 @media(max-width:760px){.burger{display:inline-flex}}
 nav.mobile{display:none;border-top:1px solid var(--line2);background:var(--bg)}
@@ -78,8 +84,8 @@ nav.mobile a[aria-current="page"]{color:var(--bronze)}
 .page{display:none}
 .page.active{display:block;animation:fade .35s ease}
 @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-section{padding-block:56px}
-@media(min-width:800px){section{padding-block:88px}}
+section{padding-block:64px}
+@media(min-width:800px){section{padding-block:104px}}
 .rule{border:0;border-top:1px solid var(--line2);margin:0}
 .grid2{display:grid;grid-template-columns:1fr;gap:32px}
 .grid3{display:grid;grid-template-columns:1fr;gap:28px}
@@ -88,10 +94,16 @@ section{padding-block:56px}
 .sec-head{display:grid;gap:14px;max-width:44em;margin-bottom:40px}
 
 /* hero */
-.hero{padding-block:48px 40px;text-align:center}
-.hero .logo{width:min(300px,60vw);height:auto;margin:0 auto 28px;display:block}
+.hero{position:relative;padding:0;text-align:center;overflow:hidden;background:var(--bg2)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,var(--veil) 0%,var(--veil2) 45%,var(--veil) 100%)}
+.hero-in{position:relative;padding-block:72px 64px}
+@media(min-width:800px){.hero-in{padding-block:104px 96px}}
+.hero .logo{width:min(280px,58vw);height:auto;margin:0 auto 36px;display:block;filter:drop-shadow(0 1px 0 var(--bg2))}
 .hero h1{max-width:18em;margin:18px auto 0}
 .hero .lead{margin:22px auto 0;text-align:center}
+.tiles{padding-block:40px 64px}
 .split{display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px}
 @media(min-width:700px){.split{grid-template-columns:1fr 1fr;gap:20px}}
 .split a{display:grid;gap:12px;text-align:left;padding:28px;border:1px solid var(--line);border-radius:2px;text-decoration:none;background:var(--bg2);transition:border-color .2s,transform .2s}
@@ -216,18 +228,21 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .lg-s1{stop-color:var(--g1)}.lg-s2{stop-color:var(--g2)}.lg-s3{stop-color:var(--g3)}
 /* подложка карты (геометрия NOTA) */
 .k-bg{fill:var(--bg2)}
-.k-d{fill:var(--surface);stroke:var(--line2);stroke-width:.8}
+.k-d{fill:var(--surface);stroke:var(--line2);stroke-width:.7}
+.k-road{fill:none;stroke:var(--line);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.k-kreml{fill:var(--bronze)}
+.k-lbl2{font-family:"Manrope",sans-serif;font-size:10px;fill:var(--bronze);letter-spacing:.14em;text-transform:uppercase}
 .k-park{fill:var(--park);stroke:none}
 .k-river{fill:none;stroke:var(--water);stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .k-yauza{stroke-width:3.5}
-.k-ring{fill:none;stroke:var(--line);stroke-width:1.1}
-.k-mkad{stroke-width:2}
+.k-ring{fill:none;stroke:var(--mute);stroke-width:1.3;opacity:.55}
+.k-mkad{stroke-width:2.2}
 /* таблица объектов */
 .tablehead{display:grid;gap:8px;margin:44px 0 16px}
 .objtable{border-top:1px solid var(--line)}
 .objtable .thead,.rowbtn{display:grid;grid-template-columns:14px 1fr 56px 60px 64px 120px 84px;gap:12px;align-items:center;text-align:left}
-.objtable .thead{padding:10px 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
-.rowbtn{width:100%;font:inherit;background:none;border:0;border-top:1px solid var(--line2);padding:12px 0;color:var(--ink);cursor:pointer}
+.objtable .thead{padding:10px 16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.rowbtn{width:100%;font:inherit;background:none;border:0;border-top:1px solid var(--line2);padding:12px 16px;color:var(--ink);cursor:pointer}
 .rowbtn:hover{background:var(--bg2)}
 .rowbtn i{width:8px;height:8px;border-radius:50%;display:block}
 .rowbtn .c-name b{font-weight:500;display:block}
@@ -238,7 +253,7 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .orow.hidden{display:none}
 .orow.open .rowbtn{background:var(--bg2)}
 .odet{border-top:1px solid var(--line2);background:var(--bg2)}
-.odet-in{display:grid;gap:24px;padding:20px 0 28px}
+.odet-in{display:grid;gap:24px;padding:20px 16px 28px}
 @media(min-width:900px){.odet-in{grid-template-columns:1.4fr 1fr}}
 .ogal{display:grid;gap:10px;grid-template-columns:1fr 1fr;align-items:start}
 .band{width:100%;aspect-ratio:21/9;object-fit:cover;display:block;border-radius:2px;max-width:100%}
@@ -291,44 +306,51 @@ footer a:hover{color:var(--ink)}
       <span>Прохорова<b>Select</b></span>
     </a>
     <nav class="main" aria-label="Разделы">
-      <a href="#kupit">Купить</a>
-      <a href="#prodat">Продать</a>
-      <a href="#karta">Карта объектов</a>
+      <a href="#glavnaya">Главная</a>
+      <a href="#kupit">Покупка</a>
+      <a href="#prodat">Продажа</a>
+      <a href="#karta">Карта</a>
       <a href="#kontakty">Контакты</a>
     </nav>
-    <div style="display:flex;gap:8px;align-items:center">
-      <a class="btn ghost sm" href="#kontakty" style="display:none" id="deskcall">Написать</a>
+    <div class="topright">
+      <a class="tel" href="tel:+74950000000"><span class="tel-full">+7 495 000-00-00</span><span class="tel-short">+7 495</span></a>
       <button class="burger" id="burger" aria-label="Меню">Меню</button>
     </div>
   </div>
   <nav class="mobile" id="mnav" aria-label="Разделы">
     <a href="#glavnaya">Главная</a>
-    <a href="#kupit">Помогаем купить</a>
-    <a href="#prodat">Помогаем продать</a>
+    <a href="#kupit">Покупка</a>
+    <a href="#prodat">Продажа</a>
     <a href="#karta">Карта объектов</a>
     <a href="#kontakty">Контакты</a>
+    <a href="tel:+74950000000" class="mtel">Позвонить · +7 495 000-00-00</a>
   </nav>
 </header>
 
 <!-- ============ ГЛАВНАЯ ============ -->
 <main>
 <div class="page" id="p-glavnaya">
-  <section class="hero wrap">
-    {{LOGO_INLINE}}
-    <p class="eyebrow">Вторичный рынок Москвы · бизнес и премиум · от 50 млн ₽</p>
-    <h1>Особые люди. Особые места. Особые истории.</h1>
-    <p class="lead">Меня зовут Елена Прохорова, я личный брокер для квартир бизнес- и премиум-класса в Москве. Аналитика, проверка, упаковка и сопровождение до ключей. Вы общаетесь со мной лично, от первого разговора до сделки.</p>
-    <div class="split">
+  <section class="hero">
+    <div class="hero-bg"><img src="{{HERO}}" alt=""></div>
+    <div class="wrap hero-in">
+      {{LOGO_INLINE}}
+      <p class="eyebrow">Вторичный рынок Москвы · бизнес и премиум · от 50 млн ₽</p>
+      <h1>Особые люди. Особые места. Особые истории.</h1>
+      <p class="lead">Елена Прохорова. Частная брокерская практика в бизнес- и премиум-сегменте Москвы. За каждой сделкой — аналитика, юридическая экспертиза, подготовка объекта и сопровождение до передачи ключей.</p>
+    </div>
+  </section>
+  <section class="wrap tiles">
+    <div class="split" style="margin-top:0">
       <a href="#kupit">
         <span class="eyebrow">Сценарий 1</span>
         <h2>Помогаем купить</h2>
-        <p class="mute">Для себя или как инвестицию. Объекты, которых нет на площадках, проверка до просмотра и честная оценка перспектив.</p>
+        <p class="mute">Для жизни или как инвестицию. Объекты до выхода на площадки, проверка до просмотра, взвешенная оценка перспектив.</p>
         <span class="go">Как это работает →</span>
       </a>
       <a href="#prodat">
         <span class="eyebrow">Сценарий 2</span>
         <h2>Помогаем продать</h2>
-        <p class="mute">По реальной цене и в реальный срок. Начинаем с аналитики: сколько объект стоит на самом деле и что повысит его привлекательность.</p>
+        <p class="mute">По реальной цене и в реальный срок. Сначала аналитика: сколько объект стоит на самом деле и что повысит его ценность.</p>
         <span class="go">Технология продажи →</span>
       </a>
     </div>
@@ -356,15 +378,18 @@ footer a:hover{color:var(--ink)}
   </section>
   <hr class="rule">
   <section class="wrap">
-    <div class="grid2">
-      <div>
-        <p class="eyebrow">Один человек</p>
-        <h2 style="margin-top:14px">За мной стоят те, кто нужен под задачу</h2>
-      </div>
-      <div style="display:grid;gap:18px">
-        <p class="lead">Вы работаете со мной. Когда задача требует профильных рук, я подключаю аналитика, юриста, дизайнера, технадзор или маркетинг. Поиск и координация — моя работа, вы получаете результат.</p>
-        <p class="quote">Люди. Места. Возможности. <em>Больше, чем недвижимость.</em></p>
-      </div>
+    <div class="sec-head">
+      <p class="eyebrow">Структура</p>
+      <h2>Одно имя. Полный состав.</h2>
+      <p class="lead">Вы работаете с Еленой Прохоровой. За её именем — команда, которая закрывает каждую сторону сделки.</p>
+    </div>
+    <div class="svc">
+      <div><b>Аналитика</b><p>Данные по сделкам, экспозиции и спросу. Оценка объекта и стратегии по цифрам, а не по ощущениям.</p></div>
+      <div><b>Юридический отдел</b><p>Проверка объекта и собственников, структура сделки, договоры, расчёты, регистрация.</p></div>
+      <div><b>Технический надзор</b><p>Состояние дома и квартиры, перепланировки, оценка и контроль ремонта.</p></div>
+      <div><b>Дизайн-бюро</b><p>Сценарии планировок, хоумстейджинг, комплектация и визуализация будущей квартиры.</p></div>
+      <div><b>Фото и видео</b><p>Съёмка объекта, презентации и материалы, которые выдерживают взгляд требовательного покупателя.</p></div>
+      <div><b>Маркетинг</b><p>Размещение, закрытые каналы, партнёрская сеть брокеров, работа с входящими обращениями.</p></div>
     </div>
   </section>
 
@@ -476,6 +501,7 @@ footer a:hover{color:var(--ink)}
 
   <hr class="rule">
   <section class="wrap">
+    <img class="band" style="margin-bottom:64px" src="{{PHOTO_LANE}}" alt="">
     <div class="sec-head">
       <p class="eyebrow">Вокруг объекта</p>
       <h2>Квартира продолжается после сделки</h2>
@@ -540,9 +566,11 @@ footer a:hover{color:var(--ink)}
     <p class="eyebrow">Помогаем продать</p>
     <h1 style="margin-top:16px;max-width:16em">По реальной цене. В реальный срок.</h1>
     <p class="lead" style="margin-top:22px">«Быстро» и «дорого» — одна цель, и она достижима. Условие одно: старт с честной аналитики и реальной цены, а красивая цифра в объявлении приходит следом.</p>
+    <img class="band" style="margin-top:36px" src="{{PHOTO_STAGE}}" alt="">
   </section>
 
-  <section class="wrap" style="padding-top:0">
+  <hr class="rule">
+  <section class="wrap">
     <div class="sec-head"><p class="eyebrow">Аналитика перед стартом</p><h2>Четыре ответа до того, как квартира выйдет на рынок</h2></div>
       <div class="feat">
         <div><b>Сколько объект стоит</b><p>По сделкам. Объявления — только ориентир. С учётом того, кто рядом продаёт и как двигал цену.</p></div>
@@ -586,6 +614,7 @@ footer a:hover{color:var(--ink)}
 
   <hr class="rule">
   <section class="wrap">
+    <img class="band" style="margin-bottom:56px" src="{{PHOTO_DEAL}}" alt="">
     <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Первый шаг</p><h2>Оценить квартиру</h2></div>
     <div class="strip">
       <div style="display:grid;gap:16px">

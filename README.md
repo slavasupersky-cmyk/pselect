@@ -24,3 +24,12 @@ Manrope для подписи), расставлены по пропорциям
 
 Квартиры, цены и кейсы — демонстрационные. Заглушки помечены на страницах бронзовым текстом:
 телефон, ИНН, Telegram, почта.
+
+## Раскатка на GitHub Pages
+
+1. GitHub Desktop: Commit to main → Publish repository (можно private — Pages работает и так на платных планах; на бесплатном нужен public).
+2. На github.com: Settings → Pages → Build and deployment: Source = «Deploy from a branch», Branch = `main`, папка `/ (root)` → Save.
+3. Через 1–2 минуты сайт откроется по адресу `https://slavasupersky-cmyk.github.io/pselect/`.
+4. Свой домен: Settings → Pages → Custom domain (нужна CNAME-запись на `slavasupersky-cmyk.github.io` у регистратора). Файл `CNAME` в корне появится сам.
+
+После правок: `python3 build_ps.py` → commit → push. Страница пересоберётся автоматически.

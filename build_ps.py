@@ -44,9 +44,8 @@ objs[0].update(t='Гостиная с камином, спальни окнам�
 objs[1].update(t='Кухня-гостиная 48 м² с выходом на террасу, две спальни с гардеробными, окна на закрытый двор. Паркинг на два места входит в цену.')
 
 # ---------- масштаб и SVG ----------
-xs = [o['kx'] for o in objs]; ys = [o['ky'] for o in objs]
-x0, x1 = min(xs) - 2.5, max(xs) + 2.5
-y0, y1 = min(ys) - 2.0, max(ys) + 2.0
+# фиксированная рамка: центр Москвы с Садовым и ТТК целиком, МКАД по краям
+x0, x1, y0, y1 = -12.0, 12.5, -11.0, 11.5
 Wd = 800; S = Wd / (x1 - x0); Hd = round((y1 - y0) * S)
 def P(p): return (round((p[0] - x0) * S, 1), round((p[1] - y0) * S, 1))
 def smooth(pts, closed):
@@ -69,6 +68,23 @@ svg.append(f'<path d="{smooth(W["moskva"], False)}" class="k-river"/>')
 svg.append(f'<path d="{smooth(W["yauza"], False)}" class="k-river k-yauza"/>')
 for k, v in W['rings'].items(): svg.append(f'<path d="{smooth(v, k != "Бульварное")}" class="k-ring"/>')
 svg.append(f'<path d="{smooth(M, True)}" class="k-ring k-mkad"/>')
+# радиальные магистрали (км от Кремля, приблизительно) — чтобы город узнавался
+ROADS = {
+    'Ленинградский пр.': [(0, -0.6), (-0.8, -2.2), (-1.7, -3.9), (-3.4, -6.4), (-5.2, -9.1), (-6.6, -12)],
+    'Кутузовский пр.': [(-1.7, 0.4), (-3.4, 0.9), (-5.6, 1.4), (-8.0, 2.2), (-10.5, 3.6)],
+    'Ленинский пр.': [(-1.4, 2.2), (-2.7, 4.4), (-4.2, 7.0), (-6.2, 10.8)],
+    'пр. Мира': [(0.7, -1.4), (1.1, -3.4), (1.8, -6.2), (2.7, -9.5)],
+    'ш. Энтузиастов': [(2.4, 0.3), (5.0, 0.5), (8.2, 0.9), (11, 1.4)],
+    'Варшавское ш.': [(0.2, 2.8), (0.4, 5.8), (0.9, 9.2), (1.3, 11.5)],
+    'Волгоградский пр.': [(2.0, 1.4), (4.6, 3.0), (7.2, 4.9), (9.5, 6.3)],
+    'Ярославское ш.': [(2.3, -5.5), (3.6, -8.2), (5.0, -11)],
+    'Комсомольский пр.': [(-1.6, 1.6), (-2.6, 3.0)],
+}
+for pts_ in ROADS.values():
+    svg.append(f'<path d="{smooth(pts_, False)}" class="k-road"/>')
+kx, ky = P((0.15, 0.35))
+svg.append(f'<rect x="{kx - 4:.1f}" y="{ky - 4:.1f}" width="8" height="8" transform="rotate(45 {kx:.1f} {ky:.1f})" class="k-kreml"/>')
+svg.append(f'<text class="k-lbl2" x="{kx + 9:.0f}" y="{ky + 4:.0f}">Кремль</text>')
 # подписи районов — только тех, где есть объекты, в центре их полигона
 have = {o['d'] for o in objs}
 for d in D:
@@ -79,7 +95,8 @@ for d in D:
         if 0 < px < Wd and 0 < py < Hd:
             svg.append(f'<text class="label" x="{px:.0f}" y="{py:.0f}" text-anchor="middle">{d["n"]}</text>')
 t = P((max(p[0] for p in W['rings']['ТТК']) + .3, 0.2)); svg.append(f'<text class="label" x="{t[0]:.0f}" y="{t[1]:.0f}">ТТК</text>')
-t = P((max(p[0] for p in W['rings']['Садовое']) + .3, -1.2)); svg.append(f'<text class="label" x="{t[0]:.0f}" y="{t[1]:.0f}">Садовое</text>')
+t = P((max(p[0] for p in W['rings']['Садовое']) + .3, -1.2)); svg.append(f'<text class="label" x="{t[0]:.0f}" y="{t[1]:.0f}">Садовое кольцо</text>')
+t = P((-11.6, -9.2)); svg.append(f'<text class="label" x="{t[0]:.0f}" y="{t[1]:.0f}">МКАД</text>')
 svg.append('<g id="pts"></g></svg>')
 MAP_SVG = ''.join(svg)
 
@@ -100,6 +117,10 @@ objs[1]['pic1'], objs[1]['pic2'] = g('interior-photograph-of-a34'), g('exterior'
 KEYS = g('detail') or ''
 FIRE = g('interior-photograph-of-a.') or ''
 BED = g('wide-interior') or ''
+HERO = g('hero') or BED                       # gen/hero.jpg — вид на Москву из окна
+STAGE = g('stage') or g('interior-photograph-of-a34') or ''   # gen/stage.jpg — квартира, подготовленная к продаже
+DEAL = g('deal') or KEYS                      # gen/deal.jpg — подписанная сделка, ключи
+LANE = g('lane') or g('exterior') or ''       # gen/lane.jpg — переулок в Хамовниках
 
 # ---------- планировки (вымышленные) ----------
 def plan(rooms, W_, H_):
@@ -139,7 +160,8 @@ a, b = html.index('<!-- ============ КАРТА ============ -->'), html.index('
 html = html[:a] + (H / 'karta_section.html').read_text().replace('{{MAP_SVG}}', MAP_SVG) + html[b:]
 a, b = html.index('/* ---------- объекты'), html.index('/* модалка */')
 html = html[:a] + (H / 'karta_script.js').read_text().replace('{{OBJ_JSON}}', json.dumps(objs, ensure_ascii=False)) + '\n' + html[b:]
-html = html.replace('{{KEYS}}', KEYS).replace('{{PHOTO_FIRE}}', FIRE).replace('{{PHOTO_BED}}', BED).replace('{{LOGO_INLINE}}', logo_inline('logo')).replace('{{MARK_INLINE}}', mark_inline('mark'))
+html = (html.replace('{{KEYS}}', KEYS).replace('{{PHOTO_FIRE}}', FIRE).replace('{{PHOTO_BED}}', BED)
+        .replace('{{HERO}}', HERO).replace('{{PHOTO_STAGE}}', STAGE).replace('{{PHOTO_DEAL}}', DEAL).replace('{{PHOTO_LANE}}', LANE)).replace('{{LOGO_INLINE}}', logo_inline('logo')).replace('{{MARK_INLINE}}', mark_inline('mark'))
 (H / 'prokhorova-select.html').write_text(html)   # версия для артефакта claude.ai (без обвязки документа)
 title = re.search(r'<title>(.*?)</title>', html).group(1)
 (H / 'index.html').write_text('<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'

@@ -10,7 +10,8 @@
 
 Шрифты (Google Fonts через npm @fontsource/*): дидоны с кириллицей — Prata,
 Oranienbaum; гротеск для подписи — Manrope.
-Запуск: python3 logo_type.py [prata|oranienbaum|cormorant]
+Запуск: python3 logo_type.py [cormorant-light|cormorant|cormorant-medium|prata|oranienbaum] [--tagline]
+(--tagline — с чертой и подписью «ЛЮДИ МЕСТА ВОЗМОЖНОСТИ»; по умолчанию без них)
 """
 import sys, glob
 from pathlib import Path
@@ -23,10 +24,12 @@ FONTS = Path('fonts')
 def ff(name, subset, weight=400):
     return glob.glob(str(FONTS / f'fontsource-{name}-*/package/files/{name}-{subset}-{weight}-normal.woff'))[0]
 
-VARIANT = sys.argv[1] if len(sys.argv) > 1 else 'prata'
+TAGLINE = '--tagline' in sys.argv
+args = [a for a in sys.argv[1:] if not a.startswith('--')]
+VARIANT = args[0] if args else 'cormorant-light'
 SERIF = {'prata': 'prata', 'oranienbaum': 'oranienbaum', 'cormorant': 'cormorant-garamond', 'cormorant-light': 'cormorant-garamond', 'cormorant-medium': 'cormorant-garamond'}[VARIANT]
 SERIF_W = {'cormorant-light': 300, 'cormorant-medium': 500}.get(VARIANT, 400)
-OUT = Path('logo-svg') / f'type-{VARIANT}'; OUT.mkdir(parents=True, exist_ok=True)
+OUT = Path('logo-svg') / (f'type-{VARIANT}' + ('-tagline' if TAGLINE else '')); OUT.mkdir(parents=True, exist_ok=True)
 
 class Face:
     def __init__(self, path):
@@ -93,16 +96,17 @@ dSel, wSel = serif_la.text('SELECT', sel_size, spacing=0.48)
 y_sel = y_name + 54
 els.append(f'<g class="lg-br">{place(dSel, wSel, CX, y_sel)}</g>')
 
-# черта
-y_rule = y_sel + 40
-els.append(f'<line class="lg-brs" x1="{CX - 36}" y1="{y_rule}" x2="{CX + 36}" y2="{y_rule}"/>')
-
-# подпись
-_, w100 = sans.text('ЛЮДИ    МЕСТА    ВОЗМОЖНОСТИ', 100, spacing=0.30); tag_size = 100 * 425 / w100
-dT, wT = sans.text('ЛЮДИ    МЕСТА    ВОЗМОЖНОСТИ', tag_size, spacing=0.30)
-y_tag = y_rule + 44
-els.append(f'<g class="lg-br">{place(dT, wT, CX, y_tag)}</g>')
-H = int(y_tag + 24)
+H = int(y_sel + 26)
+if TAGLINE:
+  # черта
+  y_rule = y_sel + 40
+  els.append(f'<line class="lg-brs" x1="{CX - 36}" y1="{y_rule}" x2="{CX + 36}" y2="{y_rule}"/>')
+  # подпись
+  _, w100 = sans.text('ЛЮДИ    МЕСТА    ВОЗМОЖНОСТИ', 100, spacing=0.30); tag_size = 100 * 425 / w100
+  dT, wT = sans.text('ЛЮДИ    МЕСТА    ВОЗМОЖНОСТИ', tag_size, spacing=0.30)
+  y_tag = y_rule + 44
+  els.append(f'<g class="lg-br">{place(dT, wT, CX, y_tag)}</g>')
+  H = int(y_tag + 24)
 
 body = ''.join(els)
 (OUT / 'logo-inline.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}">{body}</svg>')

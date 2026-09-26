@@ -3,7 +3,7 @@
 <style>
 :root{
   --bg:#F3F0EB; --bg2:#F8F6F2; --surface:#FCFBF9; --ink:#1B1916; --ink2:#3A3632; --mute:#7A756E; --line:#DCD7CF; --line2:#E9E5DF;
-  --bronze:#96775A; --bronze2:#C7AE8B; --bronze-soft:rgba(150,119,90,.10); --veil:rgba(243,240,235,.82); --veil2:rgba(243,240,235,.58);
+  --bronze:#96775A; --bronze2:#C7AE8B; --bronze-soft:rgba(150,119,90,.10); --veil:rgba(243,240,235,.82); --veil2:rgba(243,240,235,.58); --emerald:#2E6B52; --emerald-soft:rgba(46,107,82,.10);
   --new:#4A8A5A; --gone:#C2952E; --was:#A8A19A; --park:#E6E4DA; --water:#D6D9DA;
   --show-light:block; --show-dark:none;
   --g1:#D6BC95; --g2:#A98A63; --g3:#7C6146;
@@ -13,7 +13,7 @@
   :root:not([data-theme="light"]){
     color-scheme:dark;
     --bg:#151413; --bg2:#1B1A18; --surface:#221F1D; --ink:#EDE8E0; --ink2:#D0C9BF; --mute:#958E85; --line:#363330; --line2:#2B2926;
-    --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52);
+    --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52); --emerald:#7DB89A; --emerald-soft:rgba(125,184,154,.12);
     --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#20241F; --water:#2A2F33;
     --show-light:none; --show-dark:block;
     --g1:#E8D3AE; --g2:#C2A57C; --g3:#93755A;
@@ -23,7 +23,7 @@
 :root[data-theme="dark"]{
   color-scheme:dark;
   --bg:#151413; --bg2:#1B1A18; --surface:#221F1D; --ink:#EDE8E0; --ink2:#D0C9BF; --mute:#958E85; --line:#363330; --line2:#2B2926;
-  --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52);
+  --bronze:#CDB38B; --bronze2:#8E7451; --bronze-soft:rgba(205,179,139,.12); --veil:rgba(21,20,19,.78); --veil2:rgba(21,20,19,.52); --emerald:#7DB89A; --emerald-soft:rgba(125,184,154,.12);
   --new:#7FBF8C; --gone:#D9AA45; --was:#6E675F; --park:#20241F; --water:#2A2F33;
   --show-light:none; --show-dark:block;
   --g1:#E8D3AE; --g2:#C2A57C; --g3:#93755A;
@@ -41,7 +41,7 @@ h3{font-size:20px;line-height:1.3;font-weight:500}
 p{margin:0}
 .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:600}
 .mute{color:var(--mute)}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:20px}
+.wrap{max-width:1360px;margin:0 auto;padding-inline:20px}
 @media(min-width:800px){.wrap{padding-inline:40px}}
 .only-light{display:var(--show-light)!important}.only-dark{display:var(--show-dark)!important}
 
@@ -54,12 +54,12 @@ p{margin:0}
 .brand span b{display:block;font-weight:400;color:var(--bronze);letter-spacing:.3em;font-size:10px;margin-top:2px}
 nav.main{display:flex;gap:4px}
 nav.main a{text-decoration:none;font-size:13px;letter-spacing:.06em;padding:8px 12px;border-radius:2px;color:var(--ink2)}
-nav.main a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--bronze)}
+nav.main a[aria-current="page"]{color:var(--ink);box-shadow:inset 0 -1px 0 var(--emerald)}
 .top .wrap{gap:12px}
 nav.main a:hover{color:var(--ink)}
 .topright{display:flex;gap:10px;align-items:center}
 .tel{text-decoration:none;font-size:14px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink);padding:8px 12px;border:1px solid var(--line);border-radius:100px;white-space:nowrap}
-.tel:hover{border-color:var(--bronze);color:var(--bronze)}
+.tel:hover{border-color:var(--emerald);color:var(--emerald)}
 .tel-short{display:none}
 @media(max-width:760px){nav.main{display:none}.tel-full{display:none}.tel-short{display:inline}}
 @media(max-width:1000px) and (min-width:761px){nav.main a{padding:8px 9px}}
@@ -74,6 +74,7 @@ nav.mobile a[aria-current="page"]{color:var(--bronze)}
 /* buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;font:inherit;font-size:14px;letter-spacing:.04em;cursor:pointer;transition:opacity .2s}
 .btn:hover{opacity:.85}
+.btn.ghost:hover{border-color:var(--emerald);color:var(--emerald)}
 .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.ghost:hover{border-color:var(--ink);opacity:1}
 .btn.bronze{background:var(--bronze);border-color:var(--bronze);color:#fff}
@@ -98,12 +99,21 @@ section{padding-block:64px}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,var(--veil) 0%,var(--veil2) 45%,var(--veil) 100%)}
-.hero-in{position:relative;padding-block:72px 64px}
-@media(min-width:800px){.hero-in{padding-block:104px 96px}}
+.hero{min-height:calc(100svh - 64px);display:grid}
+.hero-in{position:relative;padding-block:56px 56px;display:grid;align-content:center;justify-items:center}
+@media(min-width:800px){.hero-in{padding-block:72px}}
 .hero .logo{width:min(280px,58vw);height:auto;margin:0 auto 36px;display:block;filter:drop-shadow(0 1px 0 var(--bg2))}
-.hero h1{max-width:18em;margin:18px auto 0}
+.hero h1{max-width:20em;margin:18px auto 0;text-wrap:initial}
 .hero .lead{margin:22px auto 0;text-align:center}
+.hero-quote{margin:26px auto 0;max-width:36em;display:grid;gap:12px}
+.hero-quote blockquote{margin:0;font-size:clamp(17px,1.6vw,20px);line-height:1.55;font-weight:300;color:var(--ink2);text-align:center}
+.hero-quote figcaption{text-align:right;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:600}
+.hero-quote figcaption::before{content:"— "}
 .tiles{padding-block:40px 64px}
+.creds{display:flex;flex-wrap:wrap;justify-content:center;gap:20px 56px;margin-top:44px}
+.creds div{display:grid;gap:4px;text-align:center}
+.creds b{font-size:clamp(26px,3vw,36px);font-weight:300;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.creds small{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
 .split{display:grid;grid-template-columns:1fr;gap:16px;margin-top:44px}
 @media(min-width:700px){.split{grid-template-columns:1fr 1fr;gap:20px}}
 .split a{display:grid;gap:12px;text-align:left;padding:28px;border:1px solid var(--line);border-radius:2px;text-decoration:none;background:var(--bg2);transition:border-color .2s,transform .2s}
@@ -177,7 +187,7 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:middle}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .chip{font:inherit;font-size:13px;padding:8px 14px;border:1px solid var(--line);border-radius:100px;background:transparent;color:var(--ink2);cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--emerald);color:#fff;border-color:var(--emerald)}
 .pt{cursor:pointer;transition:r .15s}
 .pt circle.h{fill:transparent}
 .pt.sel circle.d{stroke:var(--ink);stroke-width:2.5}
@@ -240,7 +250,9 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 /* таблица объектов */
 .tablehead{display:grid;gap:8px;margin:44px 0 16px}
 .objtable{border-top:1px solid var(--line)}
-.objtable .thead,.rowbtn{display:grid;grid-template-columns:14px 1fr 56px 60px 64px 120px 84px;gap:12px;align-items:center;text-align:left}
+.objtable .thead,.rowbtn{display:grid;grid-template-columns:14px 1fr 80px 56px 60px 64px 120px 84px;gap:12px;align-items:center;text-align:left}
+.rowbtn .c-cls{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.chips2{margin-top:-6px}
 .objtable .thead{padding:10px 16px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
 .rowbtn{width:100%;font:inherit;background:none;border:0;border-top:1px solid var(--line2);padding:12px 16px;color:var(--ink);cursor:pointer}
 .rowbtn:hover{background:var(--bg2)}
@@ -275,7 +287,7 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .panel .pimg{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px;display:block;max-width:100%}
 @media(max-width:760px){
   .objtable .thead,.rowbtn{grid-template-columns:10px 1fr 96px;gap:10px}
-  .c-area,.c-rooms,.c-floor,.c-m2{display:none}
+  .c-area,.c-rooms,.c-floor,.c-m2,.c-cls{display:none}
   .rowbtn .c-price{text-align:right}
   .ogal{grid-template-columns:1fr}
 }
@@ -290,6 +302,39 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 @media(min-width:700px){.feat.tight > div{grid-template-columns:56px 1fr}}
 .feat p{max-width:46em}
 .feat.tight p b{font-weight:500}
+/* сценарии после сделки */
+.scen{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:900px){.scen{grid-template-columns:repeat(3,1fr);gap:32px}}
+.scen > div{display:grid;gap:12px;padding-top:18px;border-top:1px solid var(--line);align-content:start}
+.scen h3{font-size:20px;font-weight:400}
+.scen ul{margin:0;padding:0;list-style:none;display:grid;gap:10px;color:var(--ink2);font-size:15px}
+.scen li b{font-weight:500;color:var(--ink)}
+/* разборы в одну колонку */
+.faq{max-width:60em}
+/* широкая форма */
+.form.wide{max-width:none}
+.row3{display:grid;gap:14px}
+@media(min-width:800px){.row3{grid-template-columns:1fr 1fr 1fr}}
+.row3 .submit{display:grid;align-content:end}
+.row3 .submit .btn{width:100%}
+.form.wide .fine{max-width:52em}
+.pain h2{font-size:clamp(24px,2.6vw,32px)}
+.contact-row{display:flex;flex-wrap:wrap;gap:20px 48px;align-items:center;margin-top:28px}
+@media(min-width:800px){.four.steps3{grid-template-columns:repeat(3,1fr)}}
+.four .num{margin-bottom:2px}
+/* выпадающий список в фирстиле (вместо системного) */
+.dd{position:relative}
+.dd select{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px}
+.dd-btn{width:100%;font:inherit;font-size:16px;text-align:left;padding:12px 44px 12px 14px;border:1px solid var(--line);border-radius:2px;background:var(--surface);color:var(--ink);cursor:pointer;position:relative}
+.dd-btn::after{content:"";position:absolute;right:16px;top:50%;width:8px;height:8px;border-right:1.6px solid var(--bronze);border-bottom:1.6px solid var(--bronze);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.dd.open .dd-btn{border-color:var(--bronze)}
+.dd.open .dd-btn::after{transform:translateY(-20%) rotate(-135deg)}
+.dd-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;margin:0;padding:6px 0;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:2px;box-shadow:var(--shadow);display:none}
+.dd.open .dd-list{display:block}
+.dd-list li{padding:11px 14px;cursor:pointer;font-size:15px;color:var(--ink2);text-transform:none;letter-spacing:0}
+.dd-btn{text-transform:none;letter-spacing:0}
+.dd-list li:hover{background:var(--bg2);color:var(--ink)}
+.dd-list li[aria-selected="true"]{color:var(--emerald);font-weight:500}
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:36px;font-size:13px;color:var(--mute)}
 footer .wrap{display:grid;gap:18px}
@@ -334,9 +379,13 @@ footer a:hover{color:var(--ink)}
     <div class="hero-bg"><img src="{{HERO}}" alt=""></div>
     <div class="wrap hero-in">
       {{LOGO_INLINE}}
-      <p class="eyebrow">Вторичный рынок Москвы · бизнес и премиум · от 50 млн ₽</p>
-      <h1>Особые люди. Особые места. Особые истории.</h1>
-      <p class="lead">Елена Прохорова. Частная брокерская практика в бизнес- и премиум-сегменте Москвы. За каждой сделкой — аналитика, юридическая экспертиза, подготовка объекта и сопровождение до передачи ключей.</p>
+      <p class="eyebrow">Вторичный рынок Москвы · бизнес и премиум</p>
+      <h1>Особые люди. Особые места.<br>Особые истории.</h1>
+      <figure class="hero-quote">
+        <blockquote>«Моя практика — частная брокерская работа в бизнес- и премиум-сегменте Москвы. За каждой сделкой стоят аналитика, проверка, экспертиза и сопровождение — от самых простых до самых сложных запросов».</blockquote>
+        <figcaption>Елена Прохорова</figcaption>
+      </figure>
+      <div class="creds"><div><b>20 лет</b><small>в недвижимости</small></div><div><b>12 000</b><small>сделок</small></div><div><b>Полный состав</b><small>аналитика · юристы · надзор · дизайн</small></div></div>
     </div>
   </section>
   <section class="wrap tiles">
@@ -355,9 +404,9 @@ footer a:hover{color:var(--ink)}
       </a>
     </div>
     <div class="hero-notes">
-      <span>Объекты от 50 млн ₽</span>
       <span>Личные встречи в Москве</span>
       <span>Часть сделок полностью онлайн</span>
+      <span>Ответ в течение дня</span>
     </div>
   </section>
 
@@ -365,13 +414,13 @@ footer a:hover{color:var(--ink)}
   <section class="wrap">
     <div class="sec-head">
       <p class="eyebrow">Подход</p>
-      <h2>Аналитика, проверка, упаковка и сопровождение</h2>
-      <p class="lead">Сделка с квартирой за 50, 100 или 300 миллионов состоит из решений, каждое из которых стоит денег. Поэтому в каждой работе четыре слоя.</p>
+      <h2>Аналитика, проверка, экспертиза и сопровождение</h2>
+      <p class="lead">Сделка с квартирой бизнес- или премиум-класса складывается из решений, каждое из которых имеет цену. Поэтому в каждой работе четыре слоя.</p>
     </div>
     <div class="four">
       <div><b>Аналитика</b><p>Что реально продаётся рядом, по каким ценам, кто двигал цену и на сколько. Конкретные сделки вместо «средней по району».</p></div>
       <div><b>Проверка</b><p>Документы, история, перепланировки, соседи, дом. До того, как вы потратите вечер на просмотр.</p></div>
-      <div><b>Упаковка</b><p>Подготовка, съёмка, материалы, размещение там, где смотрят ваши покупатели.</p></div>
+      <div><b>Экспертиза</b><p>Двадцать лет и двенадцать тысяч сделок: мы знаем, сколько объект стоит на самом деле, за какой срок уходит и где в нём скрыта ценность.</p></div>
       <div><b>Сопровождение</b><p>Переговоры, торг, сделка, передача. И то, что после: ремонт, комплектация, аренда.</p></div>
     </div>
     <img class="band" style="margin-top:48px" src="{{PHOTO_FIRE}}" alt="">
@@ -412,15 +461,15 @@ footer a:hover{color:var(--ink)}
 
   <section class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Сделки</p>
-      <h2>Три истории вместо описания услуг</h2>
+      <p class="eyebrow">Кейсы</p>
+      <h2>Реальные истории вместо накрученных отзывов</h2>
     </div>
     <div class="grid3">
       <div class="case"><div class="k">+4%<small>к первой оценке покупателя</small></div><p>Хамовники, 168 м². Продали за 71 день. Сменили стратегию показов и материалы после второй недели без офферов.</p></div>
       <div class="case"><div class="k">6,8%<small>годовых от аренды</small></div><p>Пресня, инвестиционная покупка. Объект нашли до выхода на площадки, через партнёрскую сеть. Ремонт и комплектация за 11 недель.</p></div>
       <div class="case"><div class="k">23 → 4<small>вариантов до просмотров</small></div><p>Раменки, семья с двумя детьми. Отсеяли большую часть по документам и дому. Сделка за 5 недель, включая ипотеку.</p></div>
     </div>
-    <p class="demo">Цифры в кейсах — примеры для прототипа. Заменим на реальные сделки и будем обновлять раз в месяц.</p>
+    <p class="demo">Цифры в кейсах — примеры для прототипа. Раздел пополняется реальными сделками по мере их закрытия.</p>
   </section>
 
   <hr class="rule">
@@ -456,7 +505,21 @@ footer a:hover{color:var(--ink)}
     <img class="band" style="margin-top:36px" src="{{KEYS}}" alt="">
   </section>
 
-  <section class="wrap" style="padding-top:0">
+  <section class="wrap pain">
+    <div class="grid2">
+      <div>
+        <p class="eyebrow">Главная боль</p>
+        <h2 style="margin-top:14px">Все хотят купить дешевле и быстрее. Мы называем реальную цену и реальный срок.</h2>
+      </div>
+      <div style="display:grid;gap:18px">
+        <p class="lead">Желание понятно: найти лучшую квартиру, заплатить меньше рынка и закрыть сделку за неделю. Рынок устроен иначе, и знание рынка — то, что отличает удачную покупку от торопливой.</p>
+        <p class="lead">Двадцать лет и двенадцать тысяч сделок дают нам право говорить точно: где скидка реальна, а где за ней проблема; сколько на самом деле стоит объект и что будет с его ценой через пять лет; какой срок нужен, чтобы увидеть лучшее, а не первое попавшееся. Мы не обещаем чуда. Мы называем цифры, которые потом подтверждаются.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+  <section class="wrap">
     <div class="split" style="margin-top:0">
       <div style="display:grid;gap:12px;padding:28px;border:1px solid var(--line);background:var(--bg2);border-radius:2px">
         <span class="eyebrow">Для себя</span>
@@ -505,58 +568,79 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head">
       <p class="eyebrow">Вокруг объекта</p>
       <h2>Квартира продолжается после сделки</h2>
-      <p class="lead">Самое полезное, что можно показать покупателю до покупки, — потенциал квартиры: что в ней можно изменить и сколько это будет стоить.</p>
+      <p class="lead">Самое полезное, что можно показать покупателю до покупки, — потенциал квартиры. Мы просчитываем три сценария её жизни.</p>
     </div>
-    <div class="svc">
-      <div><b>Оценка ремонта</b><p>Ориентировочный бюджет доведения квартиры до готового состояния до того, как вы её купили.</p></div>
-      <div><b>Планировка</b><p>Что можно изменить и в каких границах. Сценарии для семьи, для аренды, для перепродажи.</p></div>
-      <div><b>Подрядчики и надзор</b><p>Проверенные бригады, авторский или технический надзор, график и контроль смет.</p></div>
-      <div><b>Меблировка и комплектация</b><p>Варианты под бюджет и срок: от базовой до полной готовности «под ключ».</p></div>
-      <div><b>Визуализация сценариев</b><p>Как будет выглядеть квартира при разных решениях, до первого гвоздя.</p></div>
-      <div><b>Арендный потенциал</b><p>Реальная ставка, спрос, срок экспозиции и доходность по конкретному объекту.</p></div>
+    <div class="scen">
+      <div>
+        <span class="eyebrow">Сценарий А · для себя</span>
+        <h3>Как в ней будет жить ваша семья</h3>
+        <ul>
+          <li><b>Оценка ремонта</b> — бюджет доведения до готовности ещё до покупки</li>
+          <li><b>Планировка</b> — что можно изменить и в каких границах</li>
+          <li><b>Подрядчики и надзор</b> — проверенные бригады, авторский или технический надзор</li>
+          <li><b>Меблировка и комплектация</b> — от базовой до полной готовности «под ключ»</li>
+          <li><b>Визуализация</b> — как будет выглядеть квартира при разных решениях, до первого гвоздя</li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">План Б · аренда</span>
+        <h3>Что квартира приносит, если в ней не жить</h3>
+        <ul>
+          <li><b>Реальная ставка</b> по закрытым договорам в доме и рядом</li>
+          <li><b>Спрос и простой</b> — кто снимает такие квартиры и как долго они ждут арендатора</li>
+          <li><b>Доходность</b> после налогов, простоя и износа, а не по объявлениям</li>
+        </ul>
+      </div>
+      <div>
+        <span class="eyebrow">План В · продажа</span>
+        <h3>Как квартира выйдет из вашего портфеля</h3>
+        <ul>
+          <li><b>Ликвидность</b> — кто и за сколько купит её через три и пять лет</li>
+          <li><b>Точки роста цены</b> — что в квартире и доме будет дорожать, а что нет</li>
+          <li><b>Стратегия выхода</b> — момент, подготовка, срок экспозиции</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="grid2">
-      <div>
-        <p class="eyebrow">Разборы</p>
-        <h2 style="margin-top:14px">Что полезно знать до первого просмотра</h2>
-        <p class="mute" style="margin-top:14px;max-width:30em">Короткие практические заметки. Обновляю по мере того, как меняется рынок.</p>
-      </div>
-      <div>
+    <div class="sec-head">
+      <p class="eyebrow">Разборы</p>
+      <h2>Что полезно знать до первого просмотра</h2>
+      <p class="mute" style="max-width:30em">Короткие практические заметки. Обновляю по мере того, как меняется рынок.</p>
+    </div>
+    <div class="faq">
         <details><summary>Как оценить реальную цену квартиры</summary><div class="body"><p>Цена в объявлении — это желание продавца. Реальную цену показывают три вещи:</p><ul><li>сделки в этом доме и соседних за последний год (текущие объявления — только ориентир);</li><li>сколько раз и на сколько объект уже снижали;</li><li>срок экспозиции: квартира, которая висит полгода, стоит меньше, чем написано.</li></ul><p>По каждому объекту из подборки я показываю эти три цифры до просмотра.</p></div></details>
         <details><summary>Какие вопросы задавать по объекту</summary><div class="body"><ul><li>Кто собственник и как он получил квартиру. Сколько переходов прав за 10 лет.</li><li>Были ли перепланировки и узаконены ли они.</li><li>Что с домом: год, капремонт, управляющая компания, долги по дому.</li><li>Почему продают и как давно. Это определяет торг.</li><li>Кто соседи сверху, снизу и через стену.</li></ul></div></details>
-        <details><summary>Как посчитать бюджет ремонта и комплектации</summary><div class="body"><p>Для сегмента от 50 млн разумно закладывать отдельные строки: инженерия, черновая отделка, чистовая, мебель и техника, свет и текстиль, надзор. Ошибка большинства покупателей — считать только чистовую.</p><p>Ориентир на м² и порядок цифр по каждому объекту я даю на второй встрече, когда уже понятно, что именно вы покупаете.</p></div></details>
+        <details><summary>Как посчитать бюджет ремонта и комплектации</summary><div class="body"><p>В этом сегменте разумно закладывать отдельные строки: инженерия, черновая отделка, чистовая, мебель и техника, свет и текстиль, надзор. Ошибка большинства покупателей — считать только чистовую.</p><p>Ориентир на м² и порядок цифр по каждому объекту я даю на второй встрече, когда уже понятно, что именно вы покупаете.</p></div></details>
         <details><summary>Как оценить будущую аренду</summary><div class="body"><p>Смотрим на закрытые договоры в доме и рядом, объявления об аренде — только для ориентира, срок простоя между арендаторами и тип арендатора, который ищет такие квартиры. Дальше доходность считается честно: от чистого дохода после налогов, простоя и износа.</p></div></details>
-      </div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Ищете что-то другое?</p><h2>Оставьте параметры — подберём варианты</h2></div>
-    <div class="strip">
-      <div style="display:grid;gap:16px">
-        <p class="lead">Часть объектов остаётся вне карты. Опишите, что ищете, и я покажу, что есть в верифицированной подборке под вашу задачу.</p>
-      </div>
-      <form class="form" data-form="buy">
-        <div class="row">
-          <label>Бюджет, млн ₽<input id="b-budget" type="text" placeholder="от 50"></label>
-          <label>Комнат / спален<input id="b-rooms" type="text" placeholder="3"></label>
-        </div>
-        <label>Район или дома<input id="b-area" type="text" placeholder="Хамовники, Пресня, Раменки…"></label>
-        <label>Цель<select id="b-goal"><option>Для себя</option><option>Инвестиции и доход</option><option>Пока выбираю</option></select></label>
-        <div class="row">
-          <label>Имя<input id="b-name" type="text" required></label>
-          <label>Телефон<input id="b-phone" type="tel" required placeholder="+7"></label>
-        </div>
-        <button class="btn" type="submit">Получить подборку</button>
-        <p class="fine">Подборка приходит лично от меня, без рассылок и без передачи контакта третьим лицам.</p>
-      </form>
-      <div class="thanks">Спасибо. Параметры получила, вернусь с подборкой в течение одного-двух дней. Елена.</div>
+    <div class="sec-head" style="margin-bottom:36px">
+      <p class="eyebrow">Ищете что-то другое?</p>
+      <h2>Оставьте параметры — подберём варианты</h2>
+      <p class="lead">Часть объектов остаётся вне карты. Опишите, что ищете, и я покажу, что есть в верифицированной подборке под вашу задачу.</p>
     </div>
+    <form class="form wide" data-form="buy">
+      <div class="row3">
+        <label>Бюджет, млн ₽<input id="b-budget" type="text" placeholder="например, 120–150"></label>
+        <label>Спален<input id="b-rooms" type="text" placeholder="3"></label>
+        <label>Цель<select id="b-goal"><option>Для себя</option><option>Инвестиции и доход</option><option>Пока выбираю</option></select></label>
+      </div>
+      <label>Район или дома<input id="b-area" type="text" placeholder="Хамовники, Пресня, Раменки…"></label>
+      <label>Пожелания<textarea id="b-wish" rows="3" placeholder="Вид, этаж, терраса, школа рядом, сроки — всё, что важно"></textarea></label>
+      <div class="row3">
+        <label>Имя<input id="b-name" type="text" required></label>
+        <label>Телефон<input id="b-phone" type="tel" required placeholder="+7"></label>
+        <div class="submit"><button class="btn" type="submit">Получить подборку</button></div>
+      </div>
+      <p class="fine">Подборка приходит лично от меня, без рассылок и без передачи контакта третьим лицам.</p>
+    </form>
+    <div class="thanks">Спасибо. Параметры получила, вернусь с подборкой в течение одного-двух дней. Елена.</div>
   </section>
 </div>
 
@@ -567,6 +651,20 @@ footer a:hover{color:var(--ink)}
     <h1 style="margin-top:16px;max-width:16em">По реальной цене. В реальный срок.</h1>
     <p class="lead" style="margin-top:22px">«Быстро» и «дорого» — одна цель, и она достижима. Условие одно: старт с честной аналитики и реальной цены, а красивая цифра в объявлении приходит следом.</p>
     <img class="band" style="margin-top:36px" src="{{PHOTO_STAGE}}" alt="">
+  </section>
+
+  <hr class="rule">
+  <section class="wrap pain">
+    <div class="grid2">
+      <div>
+        <p class="eyebrow">Главная боль</p>
+        <h2 style="margin-top:14px">Все хотят продать дороже и быстрее. Мы называем реальную цену и реальный срок.</h2>
+      </div>
+      <div style="display:grid;gap:18px">
+        <p class="lead">Цена «с запасом» кажется безопасной. На практике она стоит месяцев экспозиции, а потом — снижения ниже той цифры, с которой можно было начать. Покупатели в этом сегменте видят историю объявления и торгуются от неё.</p>
+        <p class="lead">Мы знаем, за сколько уходят похожие квартиры в вашем доме и рядом, сколько недель они висят и что в них покупатели готовы оплачивать. Поэтому называем цену, которая продаёт в реальный срок, и показываем, где вложение в подготовку добавит к сумме сделки, а где будет потрачено зря. Максимум цены — это не максимум в объявлении, а максимум на счёте.</p>
+      </div>
+    </div>
   </section>
 
   <hr class="rule">
@@ -599,42 +697,40 @@ footer a:hover{color:var(--ink)}
 
   <hr class="rule">
   <section class="wrap">
-    <div class="grid2">
-      <div>
-        <p class="eyebrow">Разборы</p>
-        <h2 style="margin-top:14px">Что полезно знать продавцу</h2>
-      </div>
-      <div>
+    <div class="sec-head">
+      <p class="eyebrow">Разборы</p>
+      <h2>Что полезно знать продавцу</h2>
+    </div>
+    <div class="faq">
         <details><summary>Как подготовить квартиру к продаже</summary><div class="body"><ul><li>Убрать личное: фотографии, вещи, всё, что мешает покупателю представить себя здесь.</li><li>Свет: заменить лампы на тёплые одной температуры, снять тяжёлые шторы.</li><li>Мелкий ремонт: ручки, розетки, затирка, следы на стенах. Дешёво и заметно.</li><li>Запахи и воздух. Проветренная квартира продаётся лучше.</li><li>Стейджинг под аудиторию: семья, инвестор, одиночка — разная расстановка акцентов.</li></ul></div></details>
         <details><summary>Что можно изменить в планировке</summary><div class="body"><p>Покупатель редко покупает то, что видит. Он покупает то, что сможет из этого сделать. Мы показываем два-три сценария перепланировки с оценкой стоимости и законности, и квартира начинает «стоить» больше в его голове.</p></div></details>
         <details><summary>Как меняется предложение по районам</summary><div class="body"><p>Раз в месяц я смотрю, сколько объектов вашего класса вышло и ушло в вашем районе, и как двигались цены. Это определяет момент старта и стартовую цену. Иногда правильное решение — подождать три недели.</p></div></details>
-      </div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
     <img class="band" style="margin-bottom:56px" src="{{PHOTO_DEAL}}" alt="">
-    <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Первый шаг</p><h2>Оценить квартиру</h2></div>
-    <div class="strip">
-      <div style="display:grid;gap:16px">
-        <p class="lead">Пришлите адрес и метраж. Я посмотрю сделки по дому и рядом и скажу, в каком коридоре цена и какой срок реалистичен. Это бесплатно и без обязательств.</p>
-      </div>
-      <form class="form" data-form="sell">
-        <label>Адрес или ЖК<input id="s-addr" type="text" required placeholder="Улица, дом или название ЖК"></label>
-        <div class="row">
-          <label>Площадь, м²<input id="s-area" type="text" placeholder="120"></label>
-          <label>Этаж<input id="s-floor" type="text" placeholder="7 из 12"></label>
-        </div>
-        <div class="row">
-          <label>Имя<input id="s-name" type="text" required></label>
-          <label>Телефон<input id="s-phone" type="tel" required placeholder="+7"></label>
-        </div>
-        <button class="btn" type="submit">Получить оценку</button>
-        <p class="fine">Оценка приходит лично от меня, с пояснением, из чего она сложилась.</p>
-      </form>
-      <div class="thanks">Спасибо. Посмотрю сделки по вашему дому и напишу в течение одного-двух дней. Елена.</div>
+    <div class="sec-head" style="margin-bottom:36px">
+      <p class="eyebrow">Первый шаг</p>
+      <h2>Оценить квартиру</h2>
+      <p class="lead">Пришлите адрес и метраж. Я посмотрю сделки по дому и рядом и скажу, в каком коридоре цена и какой срок реалистичен. Это бесплатно и без обязательств.</p>
     </div>
+    <form class="form wide" data-form="sell">
+      <div class="row3">
+        <label>Адрес или ЖК<input id="s-addr" type="text" required placeholder="Улица, дом или название ЖК"></label>
+        <label>Площадь, м²<input id="s-area" type="text" placeholder="120"></label>
+        <label>Этаж<input id="s-floor" type="text" placeholder="7 из 12"></label>
+      </div>
+      <label>Пожелания<textarea id="s-wish" rows="3" placeholder="Сроки, состояние квартиры, что важно учесть"></textarea></label>
+      <div class="row3">
+        <label>Имя<input id="s-name" type="text" required></label>
+        <label>Телефон<input id="s-phone" type="tel" required placeholder="+7"></label>
+        <div class="submit"><button class="btn" type="submit">Получить оценку</button></div>
+      </div>
+      <p class="fine">Оценка приходит лично от меня, с пояснением, из чего она сложилась.</p>
+    </form>
+    <div class="thanks">Спасибо. Посмотрю сделки по вашему дому и напишу в течение одного-двух дней. Елена.</div>
   </section>
 </div>
 
@@ -699,32 +795,42 @@ footer a:hover{color:var(--ink)}
 
 <!-- ============ КОНТАКТЫ ============ -->
 <div class="page" id="p-kontakty">
-  <section class="wrap">
-    <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Контакты</p><h1>Елена Прохорова</h1></div>
-    <div class="strip">
-      <div style="display:grid;gap:18px">
-        <p class="lead">Личные встречи в Москве. Часть сделок проходит полностью онлайн: клиент решает всё по видео из любого города.</p>
-        <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
-        <p class="mute">Telegram: <b>@prokhorova_select</b> <span class="todo">· уточнить</span><br>Почта: <b>hello@prokhorova.select</b> <span class="todo">· после выбора домена</span></p>
-        <p class="mute" style="font-size:14px">Личный номер основательницы всегда указан нижней строчкой в договоре. Это правило.</p>
-        <div class="feat tight" style="margin-top:8px">
-          <div><span class="num">01</span><p><b>Первый разговор.</b> 30 минут по телефону или видео: цели, бюджет, сроки. К концу разговора у вас есть ответ, что реально.</p></div>
-          <div><span class="num">02</span><p><b>Встреча.</b> Личные встречи в Москве, место и время под вас. Онлайн — из любого города.</p></div>
-          <div><span class="num">03</span><p><b>Решение за вами.</b> Подборка или оценка приходит письмом. Дальше вы сами выбираете, продолжать ли.</p></div>
-        </div>
-      </div>
-      <form class="form" data-form="contact">
-        <div class="row">
-          <label>Имя<input id="c-name" type="text" required></label>
-          <label>Телефон<input id="c-phone" type="tel" required placeholder="+7"></label>
-        </div>
-        <label>Сообщение<textarea id="c-msg" rows="4" placeholder="Коротко о задаче"></textarea></label>
-        <button class="btn" type="submit">Написать Елене</button>
-        <p class="fine">Отвечаю лично, обычно в течение дня.</p>
-      </form>
-      <div class="thanks">Спасибо. Получила и отвечу в ближайшее время. Елена.</div>
+  <section class="wrap" style="padding-bottom:48px">
+    <p class="eyebrow">Контакты</p>
+    <h1 style="margin-top:16px">Елена Прохорова</h1>
+    <p class="lead" style="margin-top:22px">Личные встречи в Москве. Часть сделок проходит полностью онлайн: клиент решает всё по видео из любого города.</p>
+    <div class="contact-row">
+      <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
+      <p class="mute">Telegram: <b>@prokhorova_select</b> <span class="todo">· уточнить</span><br>Почта: <b>hello@prokhorova.select</b> <span class="todo">· после выбора домена</span></p>
     </div>
-    <img class="band" style="margin-top:56px" src="{{PHOTO_BED}}" alt="">
+    <img class="band" style="margin-top:48px" src="{{PHOTO_BED}}" alt="">
+  </section>
+
+  <hr class="rule">
+  <section class="wrap">
+    <div class="sec-head"><p class="eyebrow">Как это проходит</p><h2>Три шага до решения</h2></div>
+    <div class="four steps3">
+      <div><span class="num">01</span><b>Первый разговор</b><p>30 минут по телефону или видео: цели, бюджет, сроки. К концу разговора у вас есть ответ, что реально.</p></div>
+      <div><span class="num">02</span><b>Встреча</b><p>Личные встречи в Москве, место и время под вас. Онлайн — из любого города.</p></div>
+      <div><span class="num">03</span><b>Решение за вами</b><p>Подборка или оценка приходит письмом. Дальше вы сами выбираете, продолжать ли.</p></div>
+    </div>
+    <p class="mute" style="font-size:14px;margin-top:28px">Личный номер основательницы всегда указан нижней строчкой в договоре. Это правило.</p>
+  </section>
+
+  <hr class="rule">
+  <section class="wrap">
+    <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow">Написать</p><h2>Оставьте заявку</h2><p class="lead">Отвечаю лично, обычно в течение дня.</p></div>
+    <form class="form wide" data-form="contact">
+      <div class="row3">
+        <label>Имя<input id="c-name" type="text" required></label>
+        <label>Телефон<input id="c-phone" type="tel" required placeholder="+7"></label>
+        <label>Тема<select id="c-kind"><option>Покупка</option><option>Продажа</option><option>Объект с карты</option><option>Другое</option></select></label>
+      </div>
+      <label>Сообщение<textarea id="c-msg" rows="4" placeholder="Коротко о задаче"></textarea></label>
+      <div class="row3"><div class="submit"><button class="btn" type="submit">Написать Елене</button></div></div>
+      <p class="fine">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
+    </form>
+    <div class="thanks">Спасибо. Получила и отвечу в ближайшее время. Елена.</div>
   </section>
 </div>
 </main>
@@ -739,10 +845,34 @@ footer a:hover{color:var(--ink)}
     </div>
     <div style="display:grid;gap:6px">
       <a href="#glavnaya">Политика обработки персональных данных</a>
-      <span>© 2026 · Прототип, версия 0.3</span>
+      <span>© 2026 · Прототип, версия 0.6</span>
     </div>
   </div>
 </footer>
+
+<!-- подбор по параметрам (с карты) -->
+<div class="modal" id="modal2" role="dialog" aria-modal="true" aria-labelledby="m2-title">
+  <div class="box">
+    <button class="x" id="m2-close" aria-label="Закрыть">×</button>
+    <p class="eyebrow">Ищете что-то другое?</p>
+    <h2 id="m2-title" style="font-size:24px">Оставьте параметры — подберём варианты</h2>
+    <form class="form" data-form="params" style="max-width:none">
+      <div class="row">
+        <label>Бюджет, млн ₽<input id="p-budget" type="text" placeholder="например, 120–150"></label>
+        <label>Спален<input id="p-rooms" type="text" placeholder="3"></label>
+      </div>
+      <label>Район или дома<input id="p-area" type="text" placeholder="Хамовники, Пресня, Раменки…"></label>
+      <label>Пожелания<textarea id="p-wish" rows="2" placeholder="Вид, этаж, терраса, сроки"></textarea></label>
+      <div class="row">
+        <label>Имя<input id="p-name" type="text" required></label>
+        <label>Телефон<input id="p-phone" type="tel" required placeholder="+7"></label>
+      </div>
+      <button class="btn" type="submit">Получить подборку</button>
+      <p class="fine">Часть объектов остаётся вне карты. Подборка приходит лично от Елены.</p>
+    </form>
+    <div class="thanks">Спасибо. Параметры получены, подборка придёт в течение одного-двух дней. Елена.</div>
+  </div>
+</div>
 
 <!-- лид-форма по объекту -->
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
@@ -892,10 +1022,15 @@ function openLead(kind,o){
 }
 document.getElementById('m-close').addEventListener('click',()=>modal.classList.remove('open'));
 modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('open')});
+const modal2=document.getElementById('modal2');
+function openParams(){const f=modal2.querySelector('form');f.classList.remove('sent');f.reset();modal2.classList.add('open');document.getElementById('p-budget').focus()}
+document.getElementById('m2-close').addEventListener('click',()=>modal2.classList.remove('open'));
+modal2.addEventListener('click',e=>{if(e.target===modal2)modal2.classList.remove('open')});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-params]');if(b){e.preventDefault();openParams()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');modal2.classList.remove('open')}});
 
 /* формы */
-document.querySelectorAll('form[data-form]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();f.classList.add('sent')}));
+document.querySelectorAll('form[data-form]').forEach(f=>{f.addEventListener('submit',e=>{e.preventDefault();f.classList.add('sent')});f.addEventListener('reset',()=>setTimeout(()=>f.querySelectorAll('.dd select').forEach(s=>{s.parentNode.querySelector('.dd-btn').textContent=s.options[s.selectedIndex].text}),0))});
 
 /* копирование */
 document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
@@ -904,6 +1039,19 @@ document.querySelectorAll('.copy').forEach(b=>b.addEventListener('click',()=>{
   try{navigator.clipboard.writeText(t).then(done).catch(()=>{const r=document.createRange();r.selectNodeContents(b.previousElementSibling);getSelection().removeAllRanges();getSelection().addRange(r)})}catch(_){}
 }));
 
+/* выпадающие списки: системный select прячем, рисуем свой */
+document.querySelectorAll('.form select').forEach(sel=>{
+  const wrap=document.createElement('div'); wrap.className='dd'; sel.parentNode.insertBefore(wrap,sel); wrap.appendChild(sel);
+  const btn=document.createElement('button'); btn.type='button'; btn.className='dd-btn'; btn.setAttribute('aria-haspopup','listbox');
+  const ul=document.createElement('ul'); ul.className='dd-list'; ul.setAttribute('role','listbox');
+  const sync=()=>{btn.textContent=sel.options[sel.selectedIndex].text; ul.querySelectorAll('li').forEach((li,i)=>li.setAttribute('aria-selected',i===sel.selectedIndex))};
+  [...sel.options].forEach((o,i)=>{const li=document.createElement('li'); li.textContent=o.text; li.setAttribute('role','option');
+    li.addEventListener('click',()=>{sel.selectedIndex=i; sel.dispatchEvent(new Event('change')); sync(); wrap.classList.remove('open')}); ul.appendChild(li)});
+  btn.addEventListener('click',e=>{e.stopPropagation(); document.querySelectorAll('.dd.open').forEach(d=>{if(d!==wrap)d.classList.remove('open')}); wrap.classList.toggle('open')});
+  wrap.appendChild(btn); wrap.appendChild(ul); sync();
+});
+document.addEventListener('click',()=>document.querySelectorAll('.dd.open').forEach(d=>d.classList.remove('open')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(d=>d.classList.remove('open'))});
 /* роутер */
 const PAGES=['glavnaya','kupit','prodat','karta','kontakty'];
 function route(){

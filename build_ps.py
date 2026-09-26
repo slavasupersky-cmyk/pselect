@@ -24,15 +24,17 @@ def proj(lat, lon): return ((lon - LON0) * KX, (LAT0 - lat) * KY)
 
 # ---------- объекты ----------
 rows = list(csv.DictReader((H / 'nota/pick.csv').open(encoding='utf-8'), delimiter=';'))
-RATE = {'премиум': (1.15, 1.9), 'элитный': (1.9, 3.0), 'делюкс': (3.0, 4.6)}   # млн ₽ за м²
-CLS = {'премиум': 'Премиум', 'элитный': 'Элит', 'делюкс': 'Делюкс'}
+if (H / 'nota/biz/biz.csv').exists():
+    rows += list(csv.DictReader((H / 'nota/biz/biz.csv').open(encoding='utf-8'), delimiter=';'))
+RATE = {'бизнес': (0.55, 0.95), 'премиум': (1.15, 1.9), 'элитный': (1.9, 3.0), 'делюкс': (3.0, 4.6)}   # млн ₽ за м²
+CLS = {'бизнес': 'Бизнес', 'премиум': 'Премиум', 'элитный': 'Элит', 'делюкс': 'Делюкс'}
 ST = ['без отделки', 'white box', 'с отделкой от застройщика', 'дизайнерский ремонт', 'с мебелью']
 objs = []
 for r in rows:
     x, y = proj(float(r['lat']), float(r['lon']))
     lo, hi = RATE[r['class']]
     m = random.choice([88, 96, 104, 112, 118, 126, 134, 142, 150, 158, 168, 176, 188, 204, 218, 236, 260])
-    p = max(50, round(m * random.uniform(lo, hi) / 0.5) * 0.5)
+    p = max(35, round(m * random.uniform(lo, hi) / 0.5) * 0.5)
     ff = int(r['floors'] or random.choice([7, 9, 12, 14, 18]))
     objs.append(dict(slug=r['slug'], n=r['name'], d=r['district'], a=r['address'], c=CLS[r['class']],
                      h=(r['ceilings_m'] + ' м') if r['ceilings_m'] else '', m=m, r=1 if m < 100 else 2 if m < 140 else 3 if m < 200 else 4,
@@ -107,7 +109,9 @@ def b64img(path, w=640, q=70):
     return 'data:image/jpeg;base64,' + base64.b64encode(b.getvalue()).decode()
 for i, o in enumerate(objs):
     o['id'] = i; o['x'], o['y'] = P((o['kx'], o['ky']))
-    o['img'] = b64img(H / 'nota/doma' / f"{o['slug']}.jpg")
+    src_img = H / 'nota/doma' / f"{o['slug']}.jpg"
+    if not src_img.exists(): src_img = H / 'nota/biz' / f"{o['slug']}.jpg"
+    o['img'] = b64img(src_img)
     del o['kx'], o['ky']
 def g(pat):
     f = glob.glob(f'gen/*{pat}*'); return b64img(f[0], 900, 68) if f else None

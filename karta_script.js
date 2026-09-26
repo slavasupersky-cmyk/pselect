@@ -1,17 +1,18 @@
 /* ---------- объекты: дома реальные (база NOTA), квартиры и цены — демо ---------- */
 const OBJ = {{OBJ_JSON}};
+const TOTAL = 197;   // объектов в базе сейчас
 const SN = {w:"Был ранее",n:"Новый за неделю",g:"Ушёл за неделю"};
 const ORDER = {n:0,w:1,g:2};
 const fmt = n => n.toLocaleString("ru-RU");
 const cnt = s => OBJ.filter(o=>o.s===s).length;
-document.querySelector('[data-stat=all]').textContent = OBJ.length - cnt('g');
+document.querySelector('[data-stat=all]').textContent = TOTAL;
 document.querySelector('[data-stat=new]').textContent = "+"+cnt('n');
 document.querySelector('[data-stat=gone]').textContent = "−"+cnt('g');
 
 const pts = document.getElementById('pts');
 const list = document.getElementById('objlist');
 const panel = document.getElementById('panel');
-let sel = null, filter = 'all';
+let sel = null, filter = 'all', cfilter = 'all';
 const COL = {w:'var(--was)',n:'var(--new)',g:'var(--gone)'};
 
 /* точки на карте */
@@ -32,7 +33,7 @@ sorted.forEach(o=>{
   row.innerHTML = `<button class="rowbtn" aria-expanded="false">
       <i class="st-${o.s}"></i>
       <span class="c-name"><b>${o.n}</b><small>${o.d} · ${o.a}</small></span>
-      <span class="c-area">${o.m}</span><span class="c-rooms">${o.r}</span><span class="c-floor">${o.f}/${o.ff}</span>
+      <span class="c-cls">${o.c}</span><span class="c-area">${o.m}</span><span class="c-rooms">${o.r}</span><span class="c-floor">${o.f}/${o.ff}</span>
       <span class="c-price"><b>${fmt(o.p)} млн</b></span><span class="c-m2">${fmt(Math.round(o.p*1e6/o.m/1000))} тыс.</span>
     </button><div class="odet" hidden></div>`;
   row.querySelector('.rowbtn').addEventListener('click',()=>select(o.id,false));
@@ -53,7 +54,7 @@ function detailHTML(o){
       <div class="price">${fmt(o.p)} млн ₽ <span class="mute" style="font-size:14px">· ${fmt(Math.round(o.p*1e6/o.m/1000))} тыс. ₽/м²</span></div>
       <div class="params"><div><small>Площадь</small>${o.m} м²</div><div><small>Спален</small>${o.r}</div><div><small>Этаж</small>${o.f} из ${o.ff}</div><div><small>Класс дома</small>${o.c}</div><div><small>Потолки</small>${o.h||'—'}</div><div><small>Состояние</small>${o.st}</div></div>
       <p class="mute" style="font-size:14px">${o.t||(gone?'Объект ушёл с рынка на этой неделе. Могу показать похожие, которые ещё готовятся к выходу.':'Проверен: документы, история прав, перепланировки, дом. Презентация с адресом и условиями приходит лично от Елены.')}</p>
-      <div class="acts">${gone?`<a class="btn" href="#kupit">Подобрать похожие</a>`:`
+      <div class="acts">${gone?`<button class="btn" data-params>Подобрать похожие</button>`:`
         <button class="btn" data-lead="Получить презентацию">Получить презентацию</button>
         <button class="btn ghost" data-lead="Обсудить вариант">Обсудить вариант</button>`}</div>
     </div></div>`;
@@ -63,10 +64,10 @@ function renderPanel(){
   if(sel===null){
     const n=cnt('n'),g=cnt('g');
     panel.innerHTML = `<p class="eyebrow">За неделю</p>
-      <div class="stats"><div class="n"><b>+${n}</b><small>новых</small></div><div class="g"><b>−${g}</b><small>ушли</small></div><div><b>${OBJ.length-g}</b><small>в продаже</small></div></div>
-      <p class="mute">Нажмите на точку или строку в таблице ниже. Точка крупнее — дороже.</p>
+      <div class="stats"><div><b>${TOTAL}</b><small>объектов в базе</small></div><div class="n"><b>+${n}</b><small>новых</small></div><div class="g"><b>−${g}</b><small>ушли</small></div></div>
+      <p class="mute">На карте — часть базы. Нажмите на точку или строку в таблице ниже; точка крупнее — дороже.</p>
       <p class="mute" style="font-size:14px">Ушедшие объекты остаются на карте неделю: так видно, как двигается рынок в вашем районе.</p>
-      <div class="acts"><a class="btn ghost" href="#kupit">Ищете другое? Оставьте параметры</a></div>`;
+      <div class="acts"><button class="btn ghost" data-params>Ищете другое? Оставьте параметры</button></div>`;
     return;
   }
   const o = OBJ[sel];
@@ -97,14 +98,18 @@ function select(id, fromMap){
     if(rect.top<0 || rect.top>window.innerHeight*0.7) r.scrollIntoView({behavior:'smooth',block:'start'});
   }
 }
+const hidden = o => (filter!=='all'&&o.s!==filter) || (cfilter!=='all'&&o.c!==cfilter);
 function applyFilter(){
   let shown=0;
-  document.querySelectorAll('.pt').forEach(p=>{const o=OBJ[+p.dataset.id];const h=filter!=='all'&&o.s!==filter;p.classList.toggle('hidden',h);if(!h)shown++});
-  list.querySelectorAll('.orow').forEach(r=>r.classList.toggle('hidden',filter!=='all'&&r.dataset.s!==filter));
+  document.querySelectorAll('.pt').forEach(p=>{const h=hidden(OBJ[+p.dataset.id]);p.classList.toggle('hidden',h);if(!h)shown++});
+  list.querySelectorAll('.orow').forEach(r=>r.classList.toggle('hidden',hidden(OBJ[+r.dataset.id])));
   document.getElementById('map-count').textContent = shown+' на карте';
-  if(sel!==null && filter!=='all' && OBJ[sel].s!==filter){ select(sel,false); }
+  if(sel!==null && hidden(OBJ[sel])){ select(sel,false); }
 }
-document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
-  filter=c.dataset.f;document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',x===c));applyFilter();
+document.querySelectorAll('.chip[data-f]').forEach(c=>c.addEventListener('click',()=>{
+  filter=c.dataset.f;document.querySelectorAll('.chip[data-f]').forEach(x=>x.setAttribute('aria-pressed',x===c));applyFilter();
+}));
+document.querySelectorAll('.chip[data-c]').forEach(c=>c.addEventListener('click',()=>{
+  cfilter=c.dataset.c;document.querySelectorAll('.chip[data-c]').forEach(x=>x.setAttribute('aria-pressed',x===c));applyFilter();
 }));
 renderPanel(); applyFilter();

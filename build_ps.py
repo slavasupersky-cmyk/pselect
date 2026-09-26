@@ -119,7 +119,7 @@ objs[1]['plan'] = plan([(0, 0, 170, 100, 'Кухня-гостиная', 48), (17
                         (0, 100, 110, 60, 'Спальня', 20), (110, 100, 40, 60, 'Гард.', 6), (150, 100, 100, 60, 'Спальня', 18), (250, 100, 50, 60, 'Ванная', 9)], 300, 160)
 
 # ---------- логотип: вектор, цвета через CSS ----------
-LOGO = H / 'logo-svg/ps-slash'
+LOGO = H / 'logo-svg/type-cormorant-light'   # набранный шрифтом (Cormorant Garamond Light); ps-slash — трассировка макета
 def logo_inline(cls):
     s = (LOGO / 'logo-inline.svg').read_text()
     body = s[s.index('>') + 1:s.rindex('</svg>')]

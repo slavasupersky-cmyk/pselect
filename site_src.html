@@ -292,6 +292,14 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
   .ogal{grid-template-columns:1fr}
 }
 
+/* об основательнице */
+.about{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:900px){.about{grid-template-columns:minmax(280px,420px) 1fr;gap:64px;align-items:start}}
+.portrait{margin:0;display:grid;gap:10px;position:sticky;top:calc(64px + env(safe-area-inset-top,0px) + 24px)}
+.portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border-radius:2px;display:block;max-width:100%}
+.portrait figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:600}
+.about-text{display:grid;gap:22px}
+.about-text .feat p{max-width:none}
 /* четыре слоя */
 .four{display:grid;grid-template-columns:1fr;gap:20px}
 @media(min-width:800px){.four{grid-template-columns:repeat(4,1fr);gap:32px}}
@@ -424,6 +432,24 @@ footer a:hover{color:var(--ink)}
       <div><b>Сопровождение</b><p>Переговоры, торг, сделка, передача. И то, что после: ремонт, комплектация, аренда.</p></div>
     </div>
     <img class="band" style="margin-top:48px" src="{{PHOTO_FIRE}}" alt="">
+  </section>
+  <hr class="rule">
+  <section class="wrap">
+    <div class="about">
+      <figure class="portrait"><img src="{{PORTRAIT}}" alt="Елена Прохорова"><figcaption>Елена Прохорова</figcaption></figure>
+      <div class="about-text">
+        <p class="eyebrow">Об основательнице</p>
+        <h2>Елена Прохорова</h2>
+        <p class="lead">Основатель агентства «ТОЧНО. Недвижимость» и частной практики Прохорова Select. Двадцать лет в недвижимости; за плечами — девелоперский холдинг, строительство многоэтажных домов и коттеджных посёлков, собственная строительная марка.</p>
+        <div class="feat">
+          <div><b>Практика</b><p>12 000 сделок команды за двадцать лет. Агентство из 50+ специалистов с офисами в Пензе, Москве и Петербурге, рейтинг 5,0 на Домклик и в Яндексе.</p></div>
+          <div><b>Девелопмент</b><p>Руководила девелоперским холдингом: многоэтажные дома, коттеджные посёлки, запуск строительной марки. Видит объект глазами застройщика, а не только продавца.</p></div>
+          <div><b>Маркетинг и обучение</b><p>Маркетолог, сертифицированный коуч и бизнес-тренер. Спикер отраслевых конференций, ведёт обучение агентов и руководителей. <span class="todo">Уточнить: образование, стажировка в Японии, программы для Сбера/Домклик, рейтинги.</span></p></div>
+          <div><b>Голос</b><p>Автор канала «Красивые деньги» о недвижимости как инструменте и YouTube-канала «Бизнес. Деньги. Рок-н-ролл».</p></div>
+        </div>
+        <p class="quote" style="margin-top:8px">«В каждом нашем договоре внизу стоит <em>мой личный номер</em>».</p>
+      </div>
+    </div>
   </section>
   <hr class="rule">
   <section class="wrap">

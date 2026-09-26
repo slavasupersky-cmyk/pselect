@@ -125,6 +125,7 @@ HERO = g('hero') or BED                       # gen/hero.jpg — вид на М�
 STAGE = g('stage') or g('interior-photograph-of-a34') or ''   # gen/stage.jpg — квартира, подготовленная к продаже
 DEAL = g('deal') or KEYS                      # gen/deal.jpg — подписанная сделка, ключи
 LANE = g('lane') or g('exterior') or ''       # gen/lane.jpg — переулок в Хамовниках
+PORTRAIT = b64img('gen/portrait.jpg', 900, 78) if os.path.exists('gen/portrait.jpg') else ''
 
 # ---------- планировки (вымышленные) ----------
 def plan(rooms, W_, H_):
@@ -165,7 +166,7 @@ html = html[:a] + (H / 'karta_section.html').read_text().replace('{{MAP_SVG}}', 
 a, b = html.index('/* ---------- объекты'), html.index('/* модалка */')
 html = html[:a] + (H / 'karta_script.js').read_text().replace('{{OBJ_JSON}}', json.dumps(objs, ensure_ascii=False)) + '\n' + html[b:]
 html = (html.replace('{{KEYS}}', KEYS).replace('{{PHOTO_FIRE}}', FIRE).replace('{{PHOTO_BED}}', BED)
-        .replace('{{HERO}}', HERO).replace('{{PHOTO_STAGE}}', STAGE).replace('{{PHOTO_DEAL}}', DEAL).replace('{{PHOTO_LANE}}', LANE)).replace('{{LOGO_INLINE}}', logo_inline('logo')).replace('{{MARK_INLINE}}', mark_inline('mark'))
+        .replace('{{HERO}}', HERO).replace('{{PORTRAIT}}', PORTRAIT).replace('{{PHOTO_STAGE}}', STAGE).replace('{{PHOTO_DEAL}}', DEAL).replace('{{PHOTO_LANE}}', LANE)).replace('{{LOGO_INLINE}}', logo_inline('logo')).replace('{{MARK_INLINE}}', mark_inline('mark'))
 (H / 'prokhorova-select.html').write_text(html)   # версия для артефакта claude.ai (без обвязки документа)
 title = re.search(r'<title>(.*?)</title>', html).group(1)
 (H / 'index.html').write_text('<!doctype html>\n<html lang="ru">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'

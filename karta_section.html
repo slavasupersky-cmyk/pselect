@@ -2,8 +2,8 @@
 <div class="page" id="p-karta">
   <section class="wrap" style="padding-bottom:32px">
     <p class="eyebrow">Карта объектов</p>
-    <h1 style="margin-top:16px;max-width:16em">Не всё подряд, а то, что мы проверили</h1>
-    <p class="lead" style="margin-top:22px">Своя база на 200–300 квартир, которая обновляется из CRM. Здесь нет фейков и «уже продано». Зато видно, что появилось за неделю и что ушло, — и это самая полезная информация на рынке.</p>
+    <h1 style="margin-top:16px;max-width:16em">Не всё подряд, а то, что стоит смотреть</h1>
+    <p class="lead" style="margin-top:22px">Наша рабочая карта квартир бизнес- и премиум-класса Москвы. Не каталог объявлений: у каждого объекта есть причина, почему он здесь. Видно, что появилось за неделю и что ушло.</p>
   </section>
   <section class="wrap" style="padding-top:0">
     <div class="chips" role="group" aria-label="Фильтр">
@@ -30,17 +30,16 @@
             <span style="margin-left:auto" id="map-count"></span>
           </div>
         </div>
-        <p class="todo" style="margin-top:12px">Подложка — схема Москвы из базы NOTA (районы, парки, кольца, река). Дома реальные, квартиры и цены — демо. В боевой версии точки идут из CRM по API.</p>
+        <p class="todo" style="margin-top:12px">Подложка — схема Москвы из базы NOTA. Дома реальные, квартиры, цены и комментарии — демо. В боевой версии точки идут из CRM по API.</p>
       </div>
       <div class="panel" id="panel"></div>
     </div>
 
     <div class="tablehead">
-      <h2 style="font-size:24px">Объекты</h2>
-      <p class="mute" style="font-size:14px">Сначала новые, потом те, что были, ушедшие внизу. Внутри группы — от меньшей цены. Нажмите на строку, чтобы раскрыть.</p>
+      <h2 style="font-size:24px">Выбранные объекты</h2>
+      <p class="mute" style="font-size:14px">Сначала новые, потом те, что были, ушедшие внизу. Внутри группы — от меньшей цены.</p>
     </div>
-    <div class="objtable" id="objlist">
-      <div class="thead"><span></span><span>Объект</span><span class="c-cls">Класс</span><span class="c-area">м²</span><span class="c-rooms">Спален</span><span class="c-floor">Этаж</span><span class="c-price">Цена</span><span class="c-m2">₽/м²</span></div>
-    </div>
+    <div class="cards" id="objlist"></div>
+    <div class="showmore"><button class="btn ghost" id="showmore">Показать ещё</button></div>
   </section>
 </div>

@@ -343,6 +343,128 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .dd-btn{text-transform:none;letter-spacing:0}
 .dd-list li:hover{background:var(--bg2);color:var(--ink)}
 .dd-list li[aria-selected="true"]{color:var(--emerald);font-weight:500}
+/* ===== v0.8: по аудиту ===== */
+/* тёмные полноширинные блоки */
+.dark{--bg:#151413;--bg2:#1B1A18;--surface:#221F1D;--ink:#EDE8E0;--ink2:#D0C9BF;--mute:#958E85;--line:#363330;--line2:#2B2926;
+  --bronze:#CDB38B;--bronze2:#8E7451;--bronze-soft:rgba(205,179,139,.12);--emerald:#7DB89A;--emerald-soft:rgba(125,184,154,.12);
+  --new:#7FBF8C;--gone:#D9AA45;--was:#6E675F;--park:#20241F;--water:#2A2F33;--g1:#E8D3AE;--g2:#C2A57C;--g3:#93755A;--veil:rgba(21,20,19,.78);
+  background:var(--bg);color:var(--ink);color-scheme:dark}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .dark{--bg:#0D0C0B;--bg2:#131211;--surface:#181716;--line:#2C2926;--line2:#221F1D}}
+:root[data-theme="dark"] .dark{--bg:#0D0C0B;--bg2:#131211;--surface:#181716;--line:#2C2926;--line2:#221F1D}
+.dark .btn{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.dark .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+/* hero 0.8 */
+.hero .logo{width:min(220px,50vw);margin-bottom:28px}
+.hero h1{font-size:clamp(32px,4.8vw,58px);max-width:16em}
+.hero-sub{margin:22px auto 0;text-align:center;max-width:30em}
+.hero-sub b{font-weight:500;color:var(--ink);display:block;margin-bottom:4px}
+@media(max-width:480px){.hero-note{display:none}}
+.hero-note{margin:14px auto 0;max-width:34em;color:var(--mute);font-size:15px;text-align:center}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.hero .creds{margin-top:40px}
+/* подпись под hero */
+.byline{border-bottom:1px solid var(--line2);background:var(--bg2)}
+.byline .wrap{display:flex;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.byline img{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 20%;flex:none}
+.byline div{display:grid;gap:2px;line-height:1.3}
+.byline b{font-weight:500;font-size:15px}
+.byline span{font-size:13px;color:var(--mute)}
+.byline .lnk{margin-left:auto}
+.lnk{font:inherit;background:none;border:0;padding:0;color:var(--bronze);cursor:pointer;text-decoration:none;border-bottom:1px solid var(--bronze2);font-size:14px}
+.lnk:hover{color:var(--ink);border-color:var(--ink)}
+.lnk-go{text-decoration:none;color:var(--bronze);font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.lnk-go:hover{color:var(--ink)}
+/* плитки покупка/продажа */
+.split p b{font-weight:500;color:var(--ink);display:block;margin-bottom:6px}
+/* блок про Елену 0.8 */
+.bq{margin:0;display:grid;gap:14px;font-size:clamp(18px,1.7vw,22px);font-weight:300;line-height:1.5;color:var(--ink2);max-width:30em;padding-left:22px;border-left:2px solid var(--bronze)}
+.creds.left{justify-content:flex-start;margin-top:10px;gap:20px 44px}
+.creds.left div{text-align:left}
+/* команда */
+.team{display:grid;grid-template-columns:1fr;gap:0 56px}
+@media(min-width:700px){.team{grid-template-columns:1fr 1fr}}
+.team>div{display:grid;grid-template-columns:1fr;gap:2px;padding:16px 0;border-top:1px solid var(--line2)}
+.team b{font-weight:500}
+.team p{color:var(--mute);font-size:15px}
+/* карта на главной (тёмный блок) */
+.mapgrid{display:grid;gap:40px}
+@media(min-width:960px){.mapgrid{grid-template-columns:1fr 1.15fr;align-items:center;gap:72px}}
+.mapinfo{display:grid;gap:22px}
+.mapinfo .stats{gap:28px 40px}
+.mapmini{display:block;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:var(--bg2);transition:border-color .2s}
+.mapmini:hover{border-color:var(--bronze)}
+.mapmini svg{display:block;width:100%;height:auto}
+.mapmini .label,.mapmini .k-lbl2{display:none}
+.mapmini .pt{pointer-events:none}
+.dark .k-d{stroke:#2F2C29}.dark .k-ring{opacity:.75}.dark .k-road{stroke:#2F2C29}
+/* манифест */
+.manif{position:relative;overflow:hidden;padding-block:clamp(96px,14vw,180px);color:#EDE8E0;background:#151413}
+.manif>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.manif::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,rgba(15,13,12,.94) 0%,rgba(15,13,12,.82) 40%,rgba(15,13,12,.5) 75%,rgba(15,13,12,.35) 100%)}
+.manif>img{filter:saturate(.85)}
+.manif-in{position:relative;z-index:1;display:grid;gap:26px}
+.manif h2{font-size:clamp(34px,5.2vw,66px);line-height:1.04;font-weight:300;color:#EDE8E0}
+.manif p{max-width:32em;font-size:clamp(16px,1.5vw,19px);font-weight:300;color:#D0C9BF;line-height:1.55}
+/* кейсы вокруг одной цифры */
+.case .k{font-size:38px}
+.case .k small{text-transform:none;letter-spacing:0;font-size:16px;font-weight:500;color:var(--ink);margin-top:10px;line-height:1.3}
+/* принцип */
+.princ{display:grid;gap:22px;justify-items:center;text-align:center}
+.princ h2{font-size:clamp(30px,4vw,52px);max-width:16em}
+.princ .hero-quote{margin-top:6px}
+.princ .hero-quote figcaption{text-align:center}
+/* пример подбора / продажи */
+.kase{display:grid;gap:32px}
+@media(min-width:900px){.kase{grid-template-columns:260px 1fr;gap:72px;align-items:start}}
+.kase-nums{display:grid;gap:16px;align-content:start}
+.kase-nums div{display:grid;gap:4px;padding-top:12px;border-top:1px solid var(--line)}
+.kase-nums b{font-size:38px;font-weight:300;line-height:1;font-variant-numeric:tabular-nums}
+.kase-nums small{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.feat.words>div{grid-template-columns:1fr}
+@media(min-width:700px){.feat.words>div{grid-template-columns:130px 1fr}}
+.feat.words .num{padding-top:3px}
+/* контакты 0.8 */
+.cgrid{display:grid;gap:36px}
+@media(min-width:900px){.cgrid{grid-template-columns:1fr minmax(320px,440px);gap:80px;align-items:center}}
+@media(max-width:899px){.cgrid .portrait{order:-1;max-width:300px}}
+.cinfo{display:grid;gap:18px;justify-items:start}
+.cinfo h1{margin-top:4px}
+.msg{display:flex;gap:18px;flex-wrap:wrap;font-size:15px;align-items:center}
+.msg a{text-decoration:none;border-bottom:1px solid var(--bronze2);padding-bottom:2px}
+.msg a:hover{color:var(--bronze)}
+.portrait.big{position:static}
+/* карточки объектов (страница карты) */
+.cards{display:grid;gap:20px;grid-template-columns:1fr;margin-top:8px;align-items:start}
+@media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1300px){.cards{grid-template-columns:repeat(4,1fr)}}
+.card{border:1px solid var(--line);background:var(--surface);border-radius:2px;display:grid;align-content:start;overflow:hidden;transition:border-color .2s}
+.card.hidden,.card.paged{display:none}
+.card.sel{border-color:var(--bronze);box-shadow:0 0 0 1px var(--bronze)}
+.card .ph{position:relative;aspect-ratio:4/3;overflow:hidden;cursor:pointer;background:var(--bg2)}
+.card .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}
+.card .ph:hover img{transform:scale(1.03)}
+.card .ph .tag{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);background:var(--veil);padding:6px 10px;border-radius:100px;backdrop-filter:blur(6px)}
+.card .ph .tag i{width:7px;height:7px;border-radius:50%;display:block}
+.card .cb{padding:18px;display:grid;gap:10px}
+.card h3{font-size:17px;font-weight:500;line-height:1.25;cursor:pointer}
+.card .sub{font-size:13px;color:var(--mute);line-height:1.4}
+.card .pr{font-size:22px;font-weight:300;font-variant-numeric:tabular-nums;display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.card .pr small{font-size:12px;color:var(--mute);font-weight:400}
+.card .why{font-size:14px;color:var(--ink2);border-left:2px solid var(--bronze);padding-left:12px;line-height:1.45}
+.card .why small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);font-weight:600;margin-bottom:4px}
+.card .acts{display:grid;gap:8px;margin-top:4px}
+.card .more{justify-self:start;margin-top:2px}
+.card .cdet{display:none}
+.card.open .cdet{display:grid;gap:14px;padding-top:6px;border-top:1px solid var(--line2);margin-top:4px}
+.card .cdet .params{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px 14px;font-size:14px;padding-top:12px}
+.card .cdet .params small{display:block;color:var(--mute);font-size:10px;letter-spacing:.08em;text-transform:uppercase}
+.card .cdet figure{margin:0;display:grid;gap:6px}
+.card .cdet img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:2px;display:block}
+.card .cdet figcaption{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.card .cdet .plansvg{width:100%;height:auto;aspect-ratio:3/2;background:var(--bg2);border-radius:2px;border:1px solid var(--line2)}
+.card .cdet p{font-size:14px;color:var(--ink2)}
+.showmore{display:flex;justify-content:center;margin-top:28px}
 /* footer */
 footer{border-top:1px solid var(--line);padding-block:36px;font-size:13px;color:var(--mute)}
 footer .wrap{display:grid;gap:18px}
@@ -387,123 +509,131 @@ footer a:hover{color:var(--ink)}
     <div class="hero-bg"><img src="{{HERO}}" alt=""></div>
     <div class="wrap hero-in">
       {{LOGO_INLINE}}
-      <p class="eyebrow">Вторичный рынок Москвы · бизнес и премиум</p>
-      <h1>Особые люди. Особые места.<br>Особые истории.</h1>
-      <figure class="hero-quote">
-        <blockquote>«Моя практика — частная брокерская работа в бизнес- и премиум-сегменте Москвы. За каждой сделкой стоят аналитика, проверка, экспертиза и сопровождение — от самых простых до самых сложных запросов».</blockquote>
-        <figcaption>Елена Прохорова</figcaption>
-      </figure>
-      <div class="creds"><div><b>20 лет</b><small>в недвижимости</small></div><div><b>12 000</b><small>сделок</small></div><div><b>Полный состав</b><small>аналитика · юристы · надзор · дизайн</small></div></div>
+      <p class="eyebrow">Частная брокерская практика · Москва</p>
+      <h1>Недвижимость Москвы,<br>которую стоит выбирать</h1>
+      <p class="lead hero-sub"><b>Частная брокерская практика Елены Прохоровой.</b>Покупка и продажа квартир бизнес- и премиум-класса.</p>
+      <p class="hero-note">Аналитика рынка, собственная база объектов и сопровождение сделки от первого выбора до ключей.</p>
+      <div class="hero-cta"><a class="btn" href="#kupit">Подобрать квартиру</a><a class="btn ghost" href="#prodat">Продать квартиру</a></div>
+      <div class="creds"><div><b>20 лет</b><small>в недвижимости</small></div><div><b>12 000+</b><small>сделок команды</small></div><div><b>Москва</b><small>бизнес и премиум</small></div></div>
     </div>
   </section>
-  <section class="wrap tiles">
+  <div class="byline"><div class="wrap"><img src="{{PORTRAIT}}" alt=""><div><b>Елена Прохорова</b><span>Основатель Прохорова Select · 20 лет в недвижимости</span></div><button class="lnk" data-scroll="about">Об Елене ↓</button></div></div>
+
+  <section class="wrap tiles" style="padding-top:56px">
     <div class="split" style="margin-top:0">
       <a href="#kupit">
-        <span class="eyebrow">Сценарий 1</span>
-        <h2>Помогаем купить</h2>
-        <p class="mute">Для жизни или как инвестицию. Объекты до выхода на площадки, проверка до просмотра, взвешенная оценка перспектив.</p>
-        <span class="go">Как это работает →</span>
+        <span class="eyebrow">Покупка</span>
+        <h2>Вы выбираете квартиру</h2>
+        <p class="mute"><b>Не начинаем с конкретного объекта.</b>Сначала понимаем задачу, бюджет и сценарий жизни. Затем показываем рынок целиком: открытые предложения, закрытые продажи и объекты до выхода на площадки.</p>
+        <span class="go">Смотреть, как мы подбираем →</span>
       </a>
       <a href="#prodat">
-        <span class="eyebrow">Сценарий 2</span>
-        <h2>Помогаем продать</h2>
-        <p class="mute">По реальной цене и в реальный срок. Сначала аналитика: сколько объект стоит на самом деле и что повысит его ценность.</p>
-        <span class="go">Технология продажи →</span>
+        <span class="eyebrow">Продажа</span>
+        <h2>Вы продаёте квартиру</h2>
+        <p class="mute"><b>Не обещаем максимальную цену и минимальный срок одновременно.</b>Сначала определяем реальную стоимость объекта и стратегию, которая даст лучший результат в текущем рынке.</p>
+        <span class="go">Смотреть, как мы продаём →</span>
       </a>
-    </div>
-    <div class="hero-notes">
-      <span>Личные встречи в Москве</span>
-      <span>Часть сделок полностью онлайн</span>
-      <span>Ответ в течение дня</span>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
     <div class="sec-head">
-      <p class="eyebrow">Подход</p>
-      <h2>Аналитика, проверка, экспертиза и сопровождение</h2>
-      <p class="lead">Сделка с квартирой бизнес- или премиум-класса складывается из решений, каждое из которых имеет цену. Поэтому в каждой работе четыре слоя.</p>
+      <p class="eyebrow">Почему Select</p>
+      <h2>Мы не показываем всё.<br>Мы показываем то, что стоит смотреть.</h2>
     </div>
     <div class="four">
-      <div><b>Аналитика</b><p>Что реально продаётся рядом, по каким ценам, кто двигал цену и на сколько. Конкретные сделки вместо «средней по району».</p></div>
-      <div><b>Проверка</b><p>Документы, история, перепланировки, соседи, дом. До того, как вы потратите вечер на просмотр.</p></div>
-      <div><b>Экспертиза</b><p>Двадцать лет и двенадцать тысяч сделок: мы знаем, сколько объект стоит на самом деле, за какой срок уходит и где в нём скрыта ценность.</p></div>
-      <div><b>Сопровождение</b><p>Переговоры, торг, сделка, передача. И то, что после: ремонт, комплектация, аренда.</p></div>
+      <div><span class="num">01 · Рынок</span><b>Видим не только объявления</b><p>Отслеживаем новые предложения, изменение цен и объекты, которые ещё не вышли на площадки.</p></div>
+      <div><span class="num">02 · Отбор</span><b>Сравниваем с рынком до рекомендации</b><p>Каждый объект проходит сравнение с реальными сделками, прежде чем попасть к вам.</p></div>
+      <div><span class="num">03 · Проверка</span><b>Риски известны до решения</b><p>Юридическая история, дом, квартира и соседи — до того, как вы потратите вечер на просмотр.</p></div>
+      <div><span class="num">04 · Переговоры</span><b>С цифрами, а не с просьбой о скидке</b><p>Заходим в переговоры с аргументами: сделки рядом, сроки экспозиции, состояние объекта.</p></div>
     </div>
-    <img class="band" style="margin-top:48px" src="{{PHOTO_FIRE}}" alt="">
+    <p style="margin-top:40px"><a class="lnk-go" href="#karta">Посмотреть, что сейчас происходит на рынке →</a></p>
   </section>
+
   <hr class="rule">
-  <section class="wrap">
+  <section class="wrap" id="about">
     <div class="about">
       <figure class="portrait"><img src="{{PORTRAIT}}" alt="Елена Прохорова"><figcaption>Елена Прохорова</figcaption></figure>
       <div class="about-text">
-        <p class="eyebrow">Об основательнице</p>
+        <p class="eyebrow">Основатель Прохорова Select</p>
         <h2>Елена Прохорова</h2>
-        <p class="lead">Основатель агентства «ТОЧНО. Недвижимость» и частной практики Прохорова Select. Двадцать лет в недвижимости; за плечами — девелоперский холдинг, строительство многоэтажных домов и коттеджных посёлков, собственная строительная марка.</p>
-        <div class="feat">
-          <div><b>Практика</b><p>12 000 сделок команды за двадцать лет. Агентство из 50+ специалистов с офисами в Пензе, Москве и Петербурге, рейтинг 5,0 на Домклик и в Яндексе.</p></div>
-          <div><b>Девелопмент</b><p>Руководила девелоперским холдингом: многоэтажные дома, коттеджные посёлки, запуск строительной марки. Видит объект глазами застройщика, а не только продавца.</p></div>
-          <div><b>Маркетинг и обучение</b><p>Маркетолог, сертифицированный коуч и бизнес-тренер. Спикер отраслевых конференций, ведёт обучение агентов и руководителей. <span class="todo">Уточнить: образование, стажировка в Японии, программы для Сбера/Домклик, рейтинги.</span></p></div>
-          <div><b>Голос</b><p>Автор канала «Красивые деньги» о недвижимости как инструменте и YouTube-канала «Бизнес. Деньги. Рок-н-ролл».</p></div>
-        </div>
-        <p class="quote" style="margin-top:8px">«В каждом нашем договоре внизу стоит <em>мой личный номер</em>».</p>
+        <blockquote class="bq">
+          <p>Я занимаюсь недвижимостью двадцать лет. За это время я поняла одну простую вещь: хороший брокер нужен не для того, чтобы найти объявление.</p>
+          <p>Он нужен, чтобы среди сотен вариантов увидеть правильный, понять его реальную стоимость и вовремя сказать клиенту: это стоит покупать. Или — от этого лучше отказаться.</p>
+        </blockquote>
+        <div class="creds left"><div><b>20 лет</b><small>в недвижимости</small></div><div><b>12 000+</b><small>сделок команды</small></div><div><b>Москва</b><small>бизнес и премиум</small></div></div>
+        <p class="mute" style="font-size:14px;max-width:36em">Основатель агентства «ТОЧНО. Недвижимость» и частной практики Прохорова Select. Личный номер Елены стоит в каждом договоре.</p>
       </div>
-    </div>
-  </section>
-  <hr class="rule">
-  <section class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Структура</p>
-      <h2>Одно имя. Полный состав.</h2>
-      <p class="lead">Вы работаете с Еленой Прохоровой. За её именем — команда, которая закрывает каждую сторону сделки.</p>
-    </div>
-    <div class="svc">
-      <div><b>Аналитика</b><p>Данные по сделкам, экспозиции и спросу. Оценка объекта и стратегии по цифрам, а не по ощущениям.</p></div>
-      <div><b>Юридический отдел</b><p>Проверка объекта и собственников, структура сделки, договоры, расчёты, регистрация.</p></div>
-      <div><b>Технический надзор</b><p>Состояние дома и квартиры, перепланировки, оценка и контроль ремонта.</p></div>
-      <div><b>Дизайн-бюро</b><p>Сценарии планировок, хоумстейджинг, комплектация и визуализация будущей квартиры.</p></div>
-      <div><b>Фото и видео</b><p>Съёмка объекта, презентации и материалы, которые выдерживают взгляд требовательного покупателя.</p></div>
-      <div><b>Маркетинг</b><p>Размещение, закрытые каналы, партнёрская сеть брокеров, работа с входящими обращениями.</p></div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="teaser">
-      <div style="display:grid;gap:14px">
+    <div class="sec-head">
+      <p class="eyebrow">Команда</p>
+      <h2>Одно имя. Команда за ним.</h2>
+      <p class="lead">Вы работаете со мной. Но ваша сделка никогда не зависит от одного человека: под каждую задачу подключается нужная экспертиза.</p>
+    </div>
+    <div class="team">
+      <div><b>Аналитик</b><p>оценивает рынок и альтернативы</p></div>
+      <div><b>Юрист</b><p>проверяет объект и историю права</p></div>
+      <div><b>Технический специалист</b><p>оценивает состояние дома и квартиры</p></div>
+      <div><b>Дизайн-бюро</b><p>показывает потенциал пространства</p></div>
+      <div><b>Маркетинг</b><p>упаковывает и выводит объект на рынок</p></div>
+      <div><b>Брокерская команда</b><p>ведёт поиск, переговоры и сделку</p></div>
+    </div>
+    <p class="quote" style="margin-top:44px">Личный сервис <em>не означает</em> работу в одиночку.</p>
+  </section>
+
+  <section class="dark">
+    <div class="wrap mapgrid">
+      <div class="mapinfo">
         <p class="eyebrow">Карта объектов</p>
-        <h2>Отобранное и проверенное</h2>
-        <p class="mute" style="max-width:34em">Своя база на 200–300 проверенных квартир, которая обновляется из CRM. На карте видно, что появилось за неделю и что уже ушло. Массовым площадкам такое недоступно.</p>
-        <div><a class="btn" href="#karta">Открыть карту</a></div>
+        <h2>Рынок, который мы видим сегодня</h2>
+        <p class="lead">Не каталог объявлений. Наша рабочая карта квартир бизнес- и премиум-класса Москвы: что появилось за неделю и что ушло.</p>
+        <div class="stats"><div><b data-stat="all">—</b><small>объектов в базе</small></div><div class="n"><b data-stat="new">—</b><small>появились за неделю</small></div><div class="g"><b data-stat="gone">—</b><small>ушли с рынка</small></div></div>
+        <div><a class="btn" href="#karta">Открыть карту объектов</a></div>
+        <p class="mute" style="font-size:14px;max-width:30em">Не нашли подходящий вариант? <button class="lnk" data-params>Оставьте параметры</button> — посмотрим не только открытую продажу.</p>
       </div>
-      <div class="stats" id="home-stats">
-        <div><b data-stat="all">—</b><small>объектов сейчас</small></div>
-        <div class="n"><b data-stat="new">—</b><small>новых за неделю</small></div>
-        <div class="g"><b data-stat="gone">—</b><small>ушли за неделю</small></div>
-      </div>
+      <a class="mapmini" href="#karta" aria-label="Открыть карту объектов">{{MAP_SVG_HOME}}</a>
+    </div>
+  </section>
+
+  <section class="manif">
+    <img src="{{PHOTO_FIRE}}" alt="">
+    <div class="wrap manif-in">
+      <h2>Особые люди.<br>Особые места.<br>Особые истории.</h2>
+      <p>За каждой сделкой стоит не квадратный метр. Стоит решение человека — где жить, куда инвестировать, что оставить детям или какой этап жизни начать следующим.</p>
     </div>
   </section>
 
   <section class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Кейсы</p>
-      <h2>Реальные истории вместо накрученных отзывов</h2>
-    </div>
+    <div class="sec-head"><p class="eyebrow">Кейсы</p><h2>Сделки говорят точнее отзывов</h2></div>
     <div class="grid3">
-      <div class="case"><div class="k">+4%<small>к первой оценке покупателя</small></div><p>Хамовники, 168 м². Продали за 71 день. Сменили стратегию показов и материалы после второй недели без офферов.</p></div>
-      <div class="case"><div class="k">6,8%<small>годовых от аренды</small></div><p>Пресня, инвестиционная покупка. Объект нашли до выхода на площадки, через партнёрскую сеть. Ремонт и комплектация за 11 недель.</p></div>
-      <div class="case"><div class="k">23 → 4<small>вариантов до просмотров</small></div><p>Раменки, семья с двумя детьми. Отсеяли большую часть по документам и дому. Сделка за 5 недель, включая ипотеку.</p></div>
+      <div class="case"><div class="k">43 дня<small>Продали квартиру после семи месяцев на рынке</small></div><p>Хамовники. Стартовая цена собственника — 62 млн, рыночная оценка — 57–59 млн, цена сделки — 58,5 млн.</p></div>
+      <div class="case"><div class="k">−6,8 %<small>Снизили цену объекта до сделки</small></div><p>Клиент выбирал между тремя квартирами. Аналитика по сделкам рядом дала аргументы для переговоров, а не просьбу о скидке.</p></div>
+      <div class="case"><div class="k">2 объекта<small>Показали до публикации на площадках</small></div><p>Клиент искал конкретный район и планировку. Оба варианта пришли от партнёров до выхода в рекламу; сделка — за пять недель.</p></div>
     </div>
-    <p class="demo">Цифры в кейсах — примеры для прототипа. Раздел пополняется реальными сделками по мере их закрытия.</p>
+    <p class="demo">Цифры — примеры для прототипа. Раздел заполняется реальными сделками; каждая проверяется перед публикацией.</p>
   </section>
 
-  <hr class="rule">
+  <section class="dark">
+    <div class="wrap princ">
+      <p class="eyebrow">Принцип</p>
+      <h2>Иногда лучший совет — не покупать</h2>
+      <figure class="hero-quote">
+        <blockquote>«Моя задача не продать вам квартиру. Моя задача — помочь принять решение, о котором вы не пожалеете через пять лет».</blockquote>
+        <figcaption>Елена Прохорова</figcaption>
+      </figure>
+    </div>
+  </section>
+
   <section class="wrap">
-    <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Начните с разговора</p><h2>Бесплатно и без обязательств</h2></div>
+    <div class="sec-head" style="margin-bottom:28px"><p class="eyebrow">Начните с разговора</p><h2>Расскажите, какую задачу вы решаете</h2></div>
     <div class="strip">
       <div style="display:grid;gap:16px">
-        <p class="lead">Полчаса о ваших целях и возможностях. После него вы поймёте, что реально, а что нет, даже если решите действовать сами.</p>
+        <p class="lead">Покупаете квартиру, продаёте свою или пока только рассматриваете варианты — начнём с ситуации, а не с договора.</p>
         <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
         <p class="todo">Номер 495 с переадресацией и коллтрекингом — подставим после подключения</p>
       </div>
@@ -512,12 +642,12 @@ footer a:hover{color:var(--ink)}
           <label>Имя<input id="h-name" type="text" required placeholder="Как к вам обращаться"></label>
           <label>Телефон<input id="h-phone" type="tel" required placeholder="+7"></label>
         </div>
-        <label>Что интересует<select id="h-kind"><option>Купить для себя</option><option>Купить как инвестицию</option><option>Продать</option><option>Пока просто поговорить</option></select></label>
+        <label>Что вас интересует<select id="h-kind"><option>Купить</option><option>Продать</option><option>Инвестиции</option><option>Другое</option></select></label>
         <label>Пара слов о задаче<textarea id="h-msg" rows="3" placeholder="Район, бюджет, сроки — что угодно"></textarea></label>
-        <button class="btn" type="submit">Записаться на разговор</button>
-        <p class="fine">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных. Отвечаю лично, обычно в течение дня.</p>
+        <button class="btn" type="submit">Обсудить с Еленой</button>
+        <p class="fine">Елена или член команды свяжется с вами лично. Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
       </form>
-      <div class="thanks">Спасибо. Я получила заявку и свяжусь с вами в ближайшее время. Елена.</div>
+      <div class="thanks">Спасибо. Заявка у меня, свяжусь с вами лично в ближайшее время. Елена.</div>
     </div>
   </section>
 </div>
@@ -525,66 +655,59 @@ footer a:hover{color:var(--ink)}
 <!-- ============ КУПИТЬ ============ -->
 <div class="page" id="p-kupit">
   <section class="wrap" style="padding-bottom:40px">
-    <p class="eyebrow">Помогаем купить</p>
+    <p class="eyebrow">Покупка</p>
     <h1 style="margin-top:16px;max-width:16em">Квартиры до выхода на площадки</h1>
-    <p class="lead" style="margin-top:22px">Хорошие объекты в бизнес- и премиум-сегменте редко доходят до открытых сайтов, а если доходят, то уже с очередью. Моя работа — чтобы вы увидели их первыми и тратили время только на то, что стоит просмотра.</p>
+    <p class="lead" style="margin-top:22px">Хорошие объекты в бизнес- и премиум-сегменте редко доходят до открытых сайтов. Вы видите их первыми и тратите время только на то, что стоит просмотра.</p>
     <img class="band" style="margin-top:36px" src="{{KEYS}}" alt="">
   </section>
 
   <section class="wrap pain">
     <div class="grid2">
       <div>
-        <p class="eyebrow">Главная боль</p>
+        <p class="eyebrow">Главное</p>
         <h2 style="margin-top:14px">Все хотят купить дешевле и быстрее. Мы называем реальную цену и реальный срок.</h2>
       </div>
       <div style="display:grid;gap:18px">
-        <p class="lead">Желание понятно: найти лучшую квартиру, заплатить меньше рынка и закрыть сделку за неделю. Рынок устроен иначе, и знание рынка — то, что отличает удачную покупку от торопливой.</p>
-        <p class="lead">Двадцать лет и двенадцать тысяч сделок дают нам право говорить точно: где скидка реальна, а где за ней проблема; сколько на самом деле стоит объект и что будет с его ценой через пять лет; какой срок нужен, чтобы увидеть лучшее, а не первое попавшееся. Мы не обещаем чуда. Мы называем цифры, которые потом подтверждаются.</p>
+        <p class="lead">Заплатить меньше рынка и закрыть сделку за неделю хочется каждому. Рынок устроен иначе, и разницу между удачной покупкой и торопливой делает знание рынка: где скидка реальна, а где за ней проблема; сколько объект стоит на самом деле и что будет с его ценой через пять лет.</p>
+        <p class="lead">Мы не обещаем чуда. Мы называем цифры, которые потом подтверждаются.</p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="split" style="margin-top:0">
-      <div style="display:grid;gap:12px;padding:28px;border:1px solid var(--line);background:var(--bg2);border-radius:2px">
-        <span class="eyebrow">Для себя</span>
-        <h2 style="font-size:26px">Квартира как изменение жизни</h2>
-        <p class="mute">Район, дом, планировка, школа, парковка, соседи. Оцениваем, как в этой квартире будет жить ваша семья через пять лет.</p>
-      </div>
-      <div style="display:grid;gap:12px;padding:28px;border:1px solid var(--line);background:var(--bg2);border-radius:2px">
-        <span class="eyebrow">Инвестиции и доход</span>
-        <h2 style="font-size:26px">Квартира как актив</h2>
-        <p class="mute">Цена входа, бюджет доведения до готовности, арендная ставка, ликвидность на выходе. Считаем доходность до покупки.</p>
-      </div>
+    <div class="sec-head"><p class="eyebrow">Что вы получаете</p><h2>Решение, а не список ссылок</h2></div>
+    <div class="four">
+      <div><span class="num">01</span><b>Реальная цена до переговоров</b><p>Вы знаете, за сколько уходили похожие квартиры в этом доме и рядом, и торгуетесь от сделок, а не от объявления.</p></div>
+      <div><span class="num">02</span><b>Объекты, которых ещё нет на площадках</b><p>Часть рынка живёт между брокерами и в закрытых продажах. Вы видите её до выхода в рекламу.</p></div>
+      <div><span class="num">03</span><b>История и риски до решения</b><p>Собственники, переходы прав, перепланировки, дом и соседи проверены до того, как вы едете на просмотр.</p></div>
+      <div><span class="num">04</span><b>Понятная стоимость после покупки</b><p>Бюджет ремонта, комплектации и сроки — до сделки, а не после.</p></div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head"><p class="eyebrow">За пределами площадок</p><h2>Четыре причины из тех, что я вижу каждую неделю</h2></div>
-      <div class="feat tight">
-        <div><span class="num">01</span><p><b>Фейки и «уже продано».</b> Заметная часть красивых объявлений в сегменте — приманка или давно проданные квартиры. Мы работаем с тем, что актуально сегодня.</p></div>
-        <div><span class="num">02</span><p><b>Новый объект надо увидеть в первые дни.</b> Правильно оценённая квартира уходит быстро. Мы узнаём о ней раньше, чем она появится на сайтах.</p></div>
-        <div><span class="num">03</span><p><b>Закрытые чаты и партнёрские предложения.</b> Часть рынка живёт между брокерами. Вход туда — по рекомендации.</p></div>
-        <div><span class="num">04</span><p><b>Проверка до просмотра.</b> Документы, история перехода прав, перепланировки, дом и управляющая компания. Вы едете смотреть только то, что прошло фильтр.</p></div>
+    <div class="sec-head"><p class="eyebrow">Пример подбора</p><h2>Что мы нашли для клиента за 45 млн</h2></div>
+    <div class="kase">
+      <div class="kase-nums"><div><b>4</b><small>квартиры показали</small></div><div><b>3</b><small>района</small></div><div><b>2</b><small>объекта до выхода в рекламу</small></div><div><b>1</b><small>финальный выбор</small></div></div>
+      <div class="feat words">
+        <div><span class="num">Задача</span><p>Семья с двумя детьми, три спальни, школа в пешей доступности, бюджет до 45 млн, срок — до конца лета.</p></div>
+        <div><span class="num">Рынок</span><p>Двадцать три объявления по формальным параметрам. После проверки документов и домов — семь. Ещё два объекта пришли от партнёров до публикации.</p></div>
+        <div><span class="num">Отказались</span><p>От квартиры с самой низкой ценой: неузаконенная перепланировка и два перехода прав за три года.</p></div>
+        <div><span class="num">Выбрали</span><p>Квартиру в доме, где за год не было ни одной продажи. Цена сделки — на 4 % ниже стартовой: аргументом стали сделки в соседнем доме.</p></div>
       </div>
-    <p class="mute" style="margin-top:28px;max-width:40em;font-size:14px">Остальное — как именно ищем, где и с кем — рассказываю на первой встрече. Это часть метода, которая работает при личном разговоре.</p>
+    </div>
+    <p class="demo">Пример для прототипа. Заменяется реальным подбором с согласия клиента.</p>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Как проходит покупка</p>
-      <h2>Шесть шагов, каждый со своим результатом</h2>
-    </div>
-    <div class="feat">
-      <div><span class="num">01 · Разговор</span><p>Цели, бюджет, сроки, ограничения. Что важно, а что можно отдать. На выходе — понятное задание на поиск.</p></div>
-      <div><span class="num">02 · Подборка</span><p>Несколько объектов вместо сотни ссылок, каждый с пояснением: почему он здесь и какие у него слабые места.</p></div>
-      <div><span class="num">03 · Просмотры</span><p>Только то, что прошло фильтр. Смотрим вместе, с вопросами, которые задаёт только профессионал.</p></div>
-      <div><span class="num">04 · Проверка и торг</span><p>Юридическая и техническая проверка, оценка реальной цены, переговоры. Здесь выигрываются миллионы.</p></div>
-      <div><span class="num">05 · Сделка</span><p>Структура сделки, расчёты, регистрация, передача. Часть сделок проходит полностью онлайн.</p></div>
-      <div><span class="num">06 · После сделки</span><p>Ремонт, подрядчики, надзор, комплектация, аренда. Если нужно — с теми же людьми, что делали проверку.</p></div>
+    <div class="sec-head"><p class="eyebrow">Как проходит покупка</p><h2>Четыре шага, каждый со своим результатом</h2></div>
+    <div class="four">
+      <div><span class="num">01 · Разговор</span><b>Задание на поиск</b><p>Цели, бюджет, сроки; что важно и чем можно поступиться.</p></div>
+      <div><span class="num">02 · Подборка</span><b>Несколько объектов вместо сотни ссылок</b><p>Каждый — с пояснением, почему он здесь и где его слабые места.</p></div>
+      <div><span class="num">03 · Проверка и торг</span><b>Цена, которую можно защитить</b><p>Юридическая и техническая проверка, переговоры с цифрами.</p></div>
+      <div><span class="num">04 · Сделка и после</span><b>До ключей и дальше</b><p>Структура сделки, расчёты, регистрация. Потом ремонт, комплектация, аренда — если нужно.</p></div>
     </div>
   </section>
 
@@ -594,18 +717,16 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head">
       <p class="eyebrow">Вокруг объекта</p>
       <h2>Квартира продолжается после сделки</h2>
-      <p class="lead">Самое полезное, что можно показать покупателю до покупки, — потенциал квартиры. Мы просчитываем три сценария её жизни.</p>
+      <p class="lead">До покупки считаем три сценария жизни квартиры — так видно её потенциал, а не только цену.</p>
     </div>
     <div class="scen">
       <div>
         <span class="eyebrow">Сценарий А · для себя</span>
         <h3>Как в ней будет жить ваша семья</h3>
         <ul>
-          <li><b>Оценка ремонта</b> — бюджет доведения до готовности ещё до покупки</li>
+          <li><b>Бюджет ремонта</b> — до покупки, а не после</li>
           <li><b>Планировка</b> — что можно изменить и в каких границах</li>
-          <li><b>Подрядчики и надзор</b> — проверенные бригады, авторский или технический надзор</li>
-          <li><b>Меблировка и комплектация</b> — от базовой до полной готовности «под ключ»</li>
-          <li><b>Визуализация</b> — как будет выглядеть квартира при разных решениях, до первого гвоздя</li>
+          <li><b>Подрядчики, надзор, комплектация</b> — до готовности «под ключ»</li>
         </ul>
       </div>
       <div>
@@ -613,8 +734,8 @@ footer a:hover{color:var(--ink)}
         <h3>Что квартира приносит, если в ней не жить</h3>
         <ul>
           <li><b>Реальная ставка</b> по закрытым договорам в доме и рядом</li>
-          <li><b>Спрос и простой</b> — кто снимает такие квартиры и как долго они ждут арендатора</li>
-          <li><b>Доходность</b> после налогов, простоя и износа, а не по объявлениям</li>
+          <li><b>Спрос и простой</b> — кто снимает и как долго ждёт</li>
+          <li><b>Доходность</b> после налогов, простоя и износа</li>
         </ul>
       </div>
       <div>
@@ -622,8 +743,8 @@ footer a:hover{color:var(--ink)}
         <h3>Как квартира выйдет из вашего портфеля</h3>
         <ul>
           <li><b>Ликвидность</b> — кто и за сколько купит её через три и пять лет</li>
-          <li><b>Точки роста цены</b> — что в квартире и доме будет дорожать, а что нет</li>
-          <li><b>Стратегия выхода</b> — момент, подготовка, срок экспозиции</li>
+          <li><b>Точки роста цены</b> — что будет дорожать, а что нет</li>
+          <li><b>Стратегия выхода</b> — момент, подготовка, срок</li>
         </ul>
       </div>
     </div>
@@ -634,13 +755,11 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head">
       <p class="eyebrow">Разборы</p>
       <h2>Что полезно знать до первого просмотра</h2>
-      <p class="mute" style="max-width:30em">Короткие практические заметки. Обновляю по мере того, как меняется рынок.</p>
     </div>
     <div class="faq">
-        <details><summary>Как оценить реальную цену квартиры</summary><div class="body"><p>Цена в объявлении — это желание продавца. Реальную цену показывают три вещи:</p><ul><li>сделки в этом доме и соседних за последний год (текущие объявления — только ориентир);</li><li>сколько раз и на сколько объект уже снижали;</li><li>срок экспозиции: квартира, которая висит полгода, стоит меньше, чем написано.</li></ul><p>По каждому объекту из подборки я показываю эти три цифры до просмотра.</p></div></details>
-        <details><summary>Какие вопросы задавать по объекту</summary><div class="body"><ul><li>Кто собственник и как он получил квартиру. Сколько переходов прав за 10 лет.</li><li>Были ли перепланировки и узаконены ли они.</li><li>Что с домом: год, капремонт, управляющая компания, долги по дому.</li><li>Почему продают и как давно. Это определяет торг.</li><li>Кто соседи сверху, снизу и через стену.</li></ul></div></details>
-        <details><summary>Как посчитать бюджет ремонта и комплектации</summary><div class="body"><p>В этом сегменте разумно закладывать отдельные строки: инженерия, черновая отделка, чистовая, мебель и техника, свет и текстиль, надзор. Ошибка большинства покупателей — считать только чистовую.</p><p>Ориентир на м² и порядок цифр по каждому объекту я даю на второй встрече, когда уже понятно, что именно вы покупаете.</p></div></details>
-        <details><summary>Как оценить будущую аренду</summary><div class="body"><p>Смотрим на закрытые договоры в доме и рядом, объявления об аренде — только для ориентира, срок простоя между арендаторами и тип арендатора, который ищет такие квартиры. Дальше доходность считается честно: от чистого дохода после налогов, простоя и износа.</p></div></details>
+        <details><summary>Как оценить реальную цену квартиры</summary><div class="body"><p>Цена в объявлении — это желание продавца. Реальную цену показывают три вещи:</p><ul><li>сделки в этом доме и соседних за последний год;</li><li>сколько раз и на сколько объект уже снижали;</li><li>срок экспозиции: квартира, которая висит полгода, стоит меньше, чем написано.</li></ul><p>По каждому объекту из подборки эти три цифры есть до просмотра.</p></div></details>
+        <details><summary>Какие вопросы задавать по объекту</summary><div class="body"><ul><li>Кто собственник и как он получил квартиру. Сколько переходов прав за 10 лет.</li><li>Были ли перепланировки и узаконены ли они.</li><li>Что с домом: год, капремонт, управляющая компания, долги по дому.</li><li>Почему продают и как давно. Это определяет торг.</li></ul></div></details>
+        <details><summary>Как посчитать бюджет ремонта и комплектации</summary><div class="body"><p>В этом сегменте разумно закладывать отдельные строки: инженерия, черновая отделка, чистовая, мебель и техника, свет и текстиль, надзор. Ошибка большинства покупателей — считать только чистовую.</p></div></details>
     </div>
   </section>
 
@@ -649,7 +768,7 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head" style="margin-bottom:36px">
       <p class="eyebrow">Ищете что-то другое?</p>
       <h2>Оставьте параметры — подберём варианты</h2>
-      <p class="lead">Часть объектов остаётся вне карты. Опишите, что ищете, и я покажу, что есть в верифицированной подборке под вашу задачу.</p>
+      <p class="lead">Часть объектов остаётся вне карты. Опишите, что ищете, — покажу, что есть под вашу задачу.</p>
     </div>
     <form class="form wide" data-form="buy">
       <div class="row3">
@@ -664,7 +783,7 @@ footer a:hover{color:var(--ink)}
         <label>Телефон<input id="b-phone" type="tel" required placeholder="+7"></label>
         <div class="submit"><button class="btn" type="submit">Получить подборку</button></div>
       </div>
-      <p class="fine">Подборка приходит лично от меня, без рассылок и без передачи контакта третьим лицам.</p>
+      <p class="fine">Подборка приходит лично от Елены, без рассылок и без передачи контакта третьим лицам.</p>
     </form>
     <div class="thanks">Спасибо. Параметры получила, вернусь с подборкой в течение одного-двух дней. Елена.</div>
   </section>
@@ -673,9 +792,9 @@ footer a:hover{color:var(--ink)}
 <!-- ============ ПРОДАТЬ ============ -->
 <div class="page" id="p-prodat">
   <section class="wrap" style="padding-bottom:40px">
-    <p class="eyebrow">Помогаем продать</p>
+    <p class="eyebrow">Продажа</p>
     <h1 style="margin-top:16px;max-width:16em">По реальной цене. В реальный срок.</h1>
-    <p class="lead" style="margin-top:22px">«Быстро» и «дорого» — одна цель, и она достижима. Условие одно: старт с честной аналитики и реальной цены, а красивая цифра в объявлении приходит следом.</p>
+    <p class="lead" style="margin-top:22px">«Быстро» и «дорого» — одна цель, и она достижима, если начать с честной аналитики и реальной цены.</p>
     <img class="band" style="margin-top:36px" src="{{PHOTO_STAGE}}" alt="">
   </section>
 
@@ -683,41 +802,54 @@ footer a:hover{color:var(--ink)}
   <section class="wrap pain">
     <div class="grid2">
       <div>
-        <p class="eyebrow">Главная боль</p>
+        <p class="eyebrow">Главное</p>
         <h2 style="margin-top:14px">Все хотят продать дороже и быстрее. Мы называем реальную цену и реальный срок.</h2>
       </div>
       <div style="display:grid;gap:18px">
-        <p class="lead">Цена «с запасом» кажется безопасной. На практике она стоит месяцев экспозиции, а потом — снижения ниже той цифры, с которой можно было начать. Покупатели в этом сегменте видят историю объявления и торгуются от неё.</p>
-        <p class="lead">Мы знаем, за сколько уходят похожие квартиры в вашем доме и рядом, сколько недель они висят и что в них покупатели готовы оплачивать. Поэтому называем цену, которая продаёт в реальный срок, и показываем, где вложение в подготовку добавит к сумме сделки, а где будет потрачено зря. Максимум цены — это не максимум в объявлении, а максимум на счёте.</p>
+        <p class="lead">Цена «с запасом» кажется безопасной. На практике она стоит месяцев экспозиции, а потом — снижения ниже той цифры, с которой можно было начать: покупатели в этом сегменте видят историю объявления и торгуются от неё.</p>
+        <p class="lead">Максимум цены — это не максимум в объявлении, а максимум на счёте.</p>
       </div>
     </div>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head"><p class="eyebrow">Аналитика перед стартом</p><h2>Четыре ответа до того, как квартира выйдет на рынок</h2></div>
-      <div class="feat">
-        <div><b>Сколько объект стоит</b><p>По сделкам. Объявления — только ориентир. С учётом того, кто рядом продаёт и как двигал цену.</p></div>
-        <div><b>Какой срок реалистичен</b><p>Сколько сейчас экспонируются похожие квартиры в этом доме и районе. Без обещаний «за две недели».</p></div>
-        <div><b>Что повысит привлекательность</b><p>От уборки и света до частичной замены комплектации. Конкретный список действий с бюджетом.</p></div>
-        <div><b>Где вложения оправданы, а где нет</b><p>Ремонт перед продажей окупается редко. Хоумстейджинг — почти всегда. Считаем по вашей квартире.</p></div>
-      </div>
+    <div class="sec-head"><p class="eyebrow">До старта</p><h2>Что вы знаете до того, как квартира выйдет на рынок</h2></div>
+    <div class="four">
+      <div><span class="num">01</span><b>Сколько квартира стоит</b><p>По сделкам в доме и рядом, а не по объявлениям. С учётом того, кто продаёт по соседству и как двигал цену.</p></div>
+      <div><span class="num">02</span><b>Какой срок реалистичен</b><p>Сколько сейчас экспонируются похожие квартиры. Без обещаний «за две недели».</p></div>
+      <div><span class="num">03</span><b>Что добавит к цене, а что будет потрачено зря</b><p>От света и уборки до хоумстейджинга. Ремонт перед продажей окупается редко — считаем по вашей квартире.</p></div>
+      <div><span class="num">04</span><b>Кто ваш покупатель</b><p>Картина спроса по ходу продажи: кто звонит, откуда, с каким бюджетом.</p></div>
+    </div>
     <p class="quote" style="margin-top:48px">Каждые 50 тысяч рублей в цене <em>имеют значение</em>. Но только если они реальные.</p>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">Технология продажи</p>
-      <h2>Шесть блоков, из которых складывается результат</h2>
+    <div class="sec-head"><p class="eyebrow">Пример продажи</p><h2>Как квартира продавалась восемь месяцев, а мы продали её за 43 дня</h2></div>
+    <div class="kase">
+      <div class="kase-nums"><div><b>62 млн</b><small>было в объявлении</small></div><div><b>57–59</b><small>рыночная оценка, млн</small></div><div><b>58,5 млн</b><small>цена сделки</small></div><div><b>43 дня</b><small>срок</small></div></div>
+      <div class="feat words">
+        <div><span class="num">Проблема</span><p>Восемь месяцев экспозиции, три снижения цены. Покупатели видели историю объявления и торговались от неё, а не от квартиры.</p></div>
+        <div><span class="num">Изменили</span><p>Сняли объявление на три недели. Стейджинг, новая съёмка, два сценария планировки. Вышли по цене в коридоре оценки.</p></div>
+        <div><span class="num">Позиция</span><p>Квартира для семьи с детьми: окна во двор, школа рядом. Показы адресные, через партнёрскую сеть брокеров.</p></div>
+        <div><span class="num">Результат</span><p>Два предложения на третьей неделе. Сделка на 43-й день без снижения от новой стартовой цены.</p></div>
+      </div>
     </div>
-    <div class="feat">
-      <div><span class="num">01 · Подготовка объекта</span><p>Рекомендации по ремонту, комплектации, хоумстейджингу. Что убрать, что добавить, что оставить. С бюджетом и сроком.</p></div>
-      <div><span class="num">02 · Визуальная упаковка</span><p>Съёмка, планировки, презентация объекта, текст, который дочитывают до конца.</p></div>
-      <div><span class="num">03 · Размещение и продвижение</span><p>Площадки, закрытые каналы, партнёрская сеть, адресные показы. Там, где смотрят ваши покупатели.</p></div>
-      <div><span class="num">04 · Входящие обращения</span><p>Каждый звонок отвечен, каждый интересант квалифицирован. Вы получаете картину спроса: кто, откуда, с каким бюджетом.</p></div>
-      <div><span class="num">05 · Партнёрская сеть</span><p>Брокеры, которые ведут покупателей в вашем сегменте, узнают о квартире лично от меня.</p></div>
-      <div><span class="num">06 · Сопровождение сделки</span><p>Торг, структура сделки, документы, расчёты, передача. До ключей и подписанного акта.</p></div>
+    <div style="margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;align-items:center"><button class="btn" data-scroll="sell-form">Разобрать мою квартиру</button><span class="demo" style="margin:0">Пример для прототипа. Заменяется реальной сделкой.</span></div>
+  </section>
+
+  <hr class="rule">
+  <section class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Как проходит продажа</p>
+      <h2>Четыре блока, из которых складывается результат</h2>
+    </div>
+    <div class="four">
+      <div><span class="num">01 · Подготовка</span><b>Квартира, которую хочется купить</b><p>Что убрать, что добавить, что оставить. Стейджинг, съёмка, планировочные сценарии, презентация.</p></div>
+      <div><span class="num">02 · Выход на рынок</span><b>Там, где смотрят ваши покупатели</b><p>Площадки, закрытые каналы, партнёрская сеть брокеров, адресные показы.</p></div>
+      <div><span class="num">03 · Обращения</span><b>Каждый звонок отвечен</b><p>Каждый интересант квалифицирован. Вы видите спрос: кто, откуда, с каким бюджетом.</p></div>
+      <div><span class="num">04 · Сделка</span><b>До ключей и подписанного акта</b><p>Торг с аргументами, структура сделки, документы, расчёты, передача.</p></div>
     </div>
   </section>
 
@@ -728,19 +860,19 @@ footer a:hover{color:var(--ink)}
       <h2>Что полезно знать продавцу</h2>
     </div>
     <div class="faq">
-        <details><summary>Как подготовить квартиру к продаже</summary><div class="body"><ul><li>Убрать личное: фотографии, вещи, всё, что мешает покупателю представить себя здесь.</li><li>Свет: заменить лампы на тёплые одной температуры, снять тяжёлые шторы.</li><li>Мелкий ремонт: ручки, розетки, затирка, следы на стенах. Дешёво и заметно.</li><li>Запахи и воздух. Проветренная квартира продаётся лучше.</li><li>Стейджинг под аудиторию: семья, инвестор, одиночка — разная расстановка акцентов.</li></ul></div></details>
-        <details><summary>Что можно изменить в планировке</summary><div class="body"><p>Покупатель редко покупает то, что видит. Он покупает то, что сможет из этого сделать. Мы показываем два-три сценария перепланировки с оценкой стоимости и законности, и квартира начинает «стоить» больше в его голове.</p></div></details>
-        <details><summary>Как меняется предложение по районам</summary><div class="body"><p>Раз в месяц я смотрю, сколько объектов вашего класса вышло и ушло в вашем районе, и как двигались цены. Это определяет момент старта и стартовую цену. Иногда правильное решение — подождать три недели.</p></div></details>
+        <details><summary>Как подготовить квартиру к продаже</summary><div class="body"><ul><li>Убрать личное: фотографии, вещи, всё, что мешает покупателю представить себя здесь.</li><li>Свет: лампы одной тёплой температуры, снять тяжёлые шторы.</li><li>Мелкий ремонт: ручки, розетки, затирка, следы на стенах. Дёшево и заметно.</li><li>Стейджинг под аудиторию: семья, инвестор, одиночка — разные акценты.</li></ul></div></details>
+        <details><summary>Что можно изменить в планировке</summary><div class="body"><p>Покупатель редко покупает то, что видит. Он покупает то, что сможет из этого сделать. Два-три сценария перепланировки с оценкой стоимости и законности — и квартира начинает «стоить» больше в его голове.</p></div></details>
+        <details><summary>Когда выходить на рынок</summary><div class="body"><p>Раз в месяц смотрим, сколько объектов вашего класса вышло и ушло в вашем районе и как двигались цены. Это определяет момент старта и стартовую цену. Иногда правильное решение — подождать три недели.</p></div></details>
     </div>
   </section>
 
   <hr class="rule">
-  <section class="wrap">
+  <section class="wrap" id="sell-form">
     <img class="band" style="margin-bottom:56px" src="{{PHOTO_DEAL}}" alt="">
     <div class="sec-head" style="margin-bottom:36px">
       <p class="eyebrow">Первый шаг</p>
       <h2>Оценить квартиру</h2>
-      <p class="lead">Пришлите адрес и метраж. Я посмотрю сделки по дому и рядом и скажу, в каком коридоре цена и какой срок реалистичен. Это бесплатно и без обязательств.</p>
+      <p class="lead">Пришлите адрес и метраж. Посмотрю сделки по дому и рядом и скажу, в каком коридоре цена и какой срок реалистичен.</p>
     </div>
     <form class="form wide" data-form="sell">
       <div class="row3">
@@ -754,82 +886,30 @@ footer a:hover{color:var(--ink)}
         <label>Телефон<input id="s-phone" type="tel" required placeholder="+7"></label>
         <div class="submit"><button class="btn" type="submit">Получить оценку</button></div>
       </div>
-      <p class="fine">Оценка приходит лично от меня, с пояснением, из чего она сложилась.</p>
+      <p class="fine">Оценка приходит лично от Елены, с пояснением, из чего она сложилась.</p>
     </form>
     <div class="thanks">Спасибо. Посмотрю сделки по вашему дому и напишу в течение одного-двух дней. Елена.</div>
   </section>
 </div>
 
 <!-- ============ КАРТА ============ -->
-<div class="page" id="p-karta">
-  <section class="wrap" style="padding-bottom:32px">
-    <p class="eyebrow">Карта объектов</p>
-    <h1 style="margin-top:16px;max-width:16em">Только то, что мы проверили</h1>
-    <p class="lead" style="margin-top:22px">Своя база на 200–300 квартир, которая обновляется из CRM. Каждый объект проверен и актуален на сегодня. И видно, что появилось за неделю и что ушло, — и это самая полезная информация на рынке.</p>
-  </section>
-  <section class="wrap" style="padding-top:0">
-    <div class="chips" role="group" aria-label="Фильтр">
-      <button class="chip" data-f="all" aria-pressed="true">Все объекты</button>
-      <button class="chip" data-f="n" aria-pressed="false">Новые за неделю</button>
-      <button class="chip" data-f="g" aria-pressed="false">Ушли за неделю</button>
-      <button class="chip" data-f="w" aria-pressed="false">Были ранее</button>
-    </div>
-    <div class="mapwrap">
-      <div>
-        <div class="mapbox">
-          <svg id="map" viewBox="0 0 800 640" role="img" aria-label="Схема Москвы с объектами">
-            <path class="road mkad" d="M400 40 C 560 40, 700 150, 720 320 C 735 470, 620 600, 420 605 C 230 610, 80 500, 75 330 C 70 160, 230 40, 400 40 Z"/>
-            <path class="road" d="M400 200 C 480 200, 540 260, 540 330 C 540 410, 480 460, 400 460 C 320 460, 260 410, 260 330 C 260 260, 320 200, 400 200 Z"/>
-            <path class="road" d="M400 280 C 440 280, 470 305, 470 335 C 470 370, 440 395, 400 395 C 360 395, 330 370, 330 335 C 330 305, 360 280, 400 280 Z"/>
-            <path class="river" d="M110 250 C 180 300, 220 260, 260 300 C 300 340, 250 390, 300 420 C 360 460, 390 380, 440 400 C 500 425, 470 470, 530 500 C 580 525, 640 500, 690 540"/>
-            <text class="label" x="392" y="340">Арбат</text>
-            <text class="label" x="335" y="385">Хамовники</text>
-            <text class="label" x="350" y="300">Пресня</text>
-            <text class="label" x="405" y="310">Тверской</text>
-            <text class="label" x="395" y="415">Якиманка</text>
-            <text class="label" x="440" y="345">Таганский</text>
-            <text class="label" x="445" y="300">Басманный</text>
-            <text class="label" x="280" y="430">Раменки</text>
-            <text class="label" x="300" y="360">Дорогомилово</text>
-            <text class="label" x="200" y="330">Крылатское</text>
-            <text class="label" x="290" y="285">Хорошёво</text>
-            <text class="label" x="330" y="240">Сокол</text>
-            <text class="label" x="430" y="235">Останкино</text>
-            <text class="label" x="365" y="470">Гагаринский</text>
-            <text class="label" x="420" y="440">Донской</text>
-            <text class="label" x="490" y="270">Сокольники</text>
-            <text class="label" x="510" y="360">Лефортово</text>
-            <text class="label" x="240" y="520">Тропарёво</text>
-            <text class="label" x="640" y="90">МКАД</text>
-            <text class="label" x="545" y="215">ТТК</text>
-            <g id="pts"></g>
-          </svg>
-          <div class="legend">
-            <span><i class="st-w"></i>Был ранее</span>
-            <span><i class="st-n"></i>Новый за неделю</span>
-            <span><i class="st-g"></i>Ушёл за неделю</span>
-            <span style="margin-left:auto" id="map-count"></span>
-          </div>
-        </div>
-        <p class="todo" style="margin-top:12px">Схема районов — заглушка прототипа. В боевой версии здесь Яндекс Карта с точками из CRM (API), обновление раз в сутки.</p>
-      </div>
-      <div class="panel" id="panel"></div>
-    </div>
-    <div class="objlist" id="objlist"></div>
-  </section>
-</div>
+<div class="page" id="p-karta"></div>
 
 <!-- ============ КОНТАКТЫ ============ -->
 <div class="page" id="p-kontakty">
-  <section class="wrap" style="padding-bottom:48px">
-    <p class="eyebrow">Контакты</p>
-    <h1 style="margin-top:16px">Елена Прохорова</h1>
-    <p class="lead" style="margin-top:22px">Личные встречи в Москве. Часть сделок проходит полностью онлайн: клиент решает всё по видео из любого города.</p>
-    <div class="contact-row">
-      <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
-      <p class="mute">Telegram: <b>@prokhorova_select</b> <span class="todo">· уточнить</span><br>Почта: <b>hello@prokhorova.select</b> <span class="todo">· после выбора домена</span></p>
+  <section class="wrap">
+    <div class="cgrid">
+      <div class="cinfo">
+        <p class="eyebrow">Контакты</p>
+        <h1>Елена Прохорова</h1>
+        <p class="lead">Частный брокер · Москва</p>
+        <a class="phone" href="tel:+74950000000">+7 495 000-00-00</a>
+        <div class="msg"><a href="#kontakty">Telegram</a><a href="#kontakty">WhatsApp</a><span class="todo">ссылки — после подключения номера</span></div>
+        <blockquote class="bq" style="margin-top:10px">«Первый разговор — не про договор. Сначала я хочу понять вашу задачу».</blockquote>
+        <p class="mute" style="font-size:14px">Личные встречи в Москве. Часть сделок проходит полностью онлайн — из любого города.</p>
+      </div>
+      <figure class="portrait big"><img src="{{PORTRAIT}}" alt="Елена Прохорова"></figure>
     </div>
-    <img class="band" style="margin-top:48px" src="{{PHOTO_BED}}" alt="">
   </section>
 
   <hr class="rule">
@@ -837,23 +917,22 @@ footer a:hover{color:var(--ink)}
     <div class="sec-head"><p class="eyebrow">Как это проходит</p><h2>Три шага до решения</h2></div>
     <div class="four steps3">
       <div><span class="num">01</span><b>Первый разговор</b><p>30 минут по телефону или видео: цели, бюджет, сроки. К концу разговора у вас есть ответ, что реально.</p></div>
-      <div><span class="num">02</span><b>Встреча</b><p>Личные встречи в Москве, место и время под вас. Онлайн — из любого города.</p></div>
+      <div><span class="num">02</span><b>Встреча</b><p>В Москве — место и время под вас. Онлайн — из любого города.</p></div>
       <div><span class="num">03</span><b>Решение за вами</b><p>Подборка или оценка приходит письмом. Дальше вы сами выбираете, продолжать ли.</p></div>
     </div>
-    <p class="mute" style="font-size:14px;margin-top:28px">Личный номер основательницы всегда указан нижней строчкой в договоре. Это правило.</p>
   </section>
 
   <hr class="rule">
   <section class="wrap">
-    <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow">Написать</p><h2>Оставьте заявку</h2><p class="lead">Отвечаю лично, обычно в течение дня.</p></div>
+    <div class="sec-head" style="margin-bottom:36px"><p class="eyebrow">Написать</p><h2>Расскажите о задаче</h2><p class="lead">Елена или член команды свяжется с вами лично, обычно в течение дня.</p></div>
     <form class="form wide" data-form="contact">
       <div class="row3">
         <label>Имя<input id="c-name" type="text" required></label>
         <label>Телефон<input id="c-phone" type="tel" required placeholder="+7"></label>
-        <label>Тема<select id="c-kind"><option>Покупка</option><option>Продажа</option><option>Объект с карты</option><option>Другое</option></select></label>
+        <label>Что вас интересует<select id="c-kind"><option>Купить</option><option>Продать</option><option>Инвестиции</option><option>Объект с карты</option><option>Другое</option></select></label>
       </div>
-      <label>Сообщение<textarea id="c-msg" rows="4" placeholder="Коротко о задаче"></textarea></label>
-      <div class="row3"><div class="submit"><button class="btn" type="submit">Написать Елене</button></div></div>
+      <label>Пара слов о задаче<textarea id="c-msg" rows="4" placeholder="Коротко о ситуации"></textarea></label>
+      <div class="row3"><div class="submit"><button class="btn" type="submit">Обсудить с Еленой</button></div></div>
       <p class="fine">Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.</p>
     </form>
     <div class="thanks">Спасибо. Получила и отвечу в ближайшее время. Елена.</div>
@@ -871,7 +950,7 @@ footer a:hover{color:var(--ink)}
     </div>
     <div style="display:grid;gap:6px">
       <a href="#glavnaya">Политика обработки персональных данных</a>
-      <span>© 2026 · Прототип, версия 0.6</span>
+      <span>© 2026 · Прототип, версия 0.8</span>
     </div>
   </div>
 </footer>
@@ -1053,6 +1132,7 @@ function openParams(){const f=modal2.querySelector('form');f.classList.remove('s
 document.getElementById('m2-close').addEventListener('click',()=>modal2.classList.remove('open'));
 modal2.addEventListener('click',e=>{if(e.target===modal2)modal2.classList.remove('open')});
 document.addEventListener('click',e=>{const b=e.target.closest('[data-params]');if(b){e.preventDefault();openParams()}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-scroll]');if(b){const t=document.getElementById(b.dataset.scroll);if(t)t.scrollIntoView({behavior:'smooth',block:'start'})}});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');modal2.classList.remove('open')}});
 
 /* формы */

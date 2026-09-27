@@ -61,7 +61,11 @@ nav.main a:hover{color:var(--ink)}
 .tel{text-decoration:none;font-size:14px;letter-spacing:.04em;font-variant-numeric:tabular-nums;color:var(--ink);padding:8px 12px;border:1px solid var(--line);border-radius:100px;white-space:nowrap}
 .tel:hover{border-color:var(--emerald);color:var(--emerald)}
 .tel-short{display:none}
-@media(max-width:760px){nav.main{display:none}.tel-full{display:none}.tel-short{display:inline}}
+@media(max-width:760px){nav.main{display:none}.tel-full{display:none}.tel-short{display:inline-flex}
+  .tel{padding:0;width:40px;height:40px;border-radius:50%;justify-content:center;align-items:center;display:inline-flex}
+  .tel-short svg{width:18px;height:18px;display:block}
+  .burger{width:40px;height:40px;padding:0;border-radius:50%;justify-content:center;align-items:center;display:inline-flex}
+  .burger svg{width:18px;height:18px;display:block}}
 @media(max-width:1000px) and (min-width:761px){nav.main a{padding:8px 9px}}
 nav.mobile .mtel{color:var(--bronze);font-weight:500}
 .burger{display:none;background:none;border:1px solid var(--line);border-radius:2px;color:var(--ink);padding:8px 10px;font:inherit;font-size:13px}
@@ -295,7 +299,9 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 /* об основательнице */
 .about{display:grid;grid-template-columns:1fr;gap:32px}
 @media(min-width:900px){.about{grid-template-columns:minmax(280px,420px) 1fr;gap:64px;align-items:start}}
-.portrait{margin:0;display:grid;gap:10px;position:sticky;top:calc(64px + env(safe-area-inset-top,0px) + 24px)}
+.portrait{margin:0;display:grid;gap:10px}
+@media(max-width:899px){.about .portrait figcaption{display:none}}
+@media(min-width:900px){.portrait{position:sticky;top:calc(64px + env(safe-area-inset-top,0px) + 24px)}}
 .portrait img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;border-radius:2px;display:block;max-width:100%}
 .portrait figcaption{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:600}
 .about-text{display:grid;gap:22px}
@@ -358,7 +364,7 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .hero h1{font-size:clamp(32px,4.8vw,58px);max-width:16em}
 .hero-sub{margin:22px auto 0;text-align:center;max-width:30em}
 .hero-sub b{font-weight:500;color:var(--ink);display:block;margin-bottom:4px}
-@media(max-width:480px){.hero-note{display:none}}
+@media(max-width:480px){.hero-note{display:none}.hero .logo{width:150px;margin-bottom:18px}.hero-sub{font-size:16px;margin-top:16px}.hero-cta{margin-top:22px}.hero .creds{margin-top:26px;gap:14px 36px}.hero .creds b{font-size:26px}.hero-in{padding-block:36px}}
 .hero-note{margin:14px auto 0;max-width:34em;color:var(--mute);font-size:15px;text-align:center}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
 .hero .creds{margin-top:40px}
@@ -370,6 +376,7 @@ details .body ul{margin:0;padding-left:18px;display:grid;gap:6px}
 .byline b{font-weight:500;font-size:15px}
 .byline span{font-size:13px;color:var(--mute)}
 .byline .lnk{margin-left:auto}
+@media(max-width:600px){.byline .wrap{flex-wrap:nowrap;gap:12px;cursor:pointer}.byline .lnk{display:none}.byline img{width:44px;height:44px}.byline b{font-size:14px}.byline span{font-size:12px}}
 .lnk{font:inherit;background:none;border:0;padding:0;color:var(--bronze);cursor:pointer;text-decoration:none;border-bottom:1px solid var(--bronze2);font-size:14px}
 .lnk:hover{color:var(--ink);border-color:var(--ink)}
 .lnk-go{text-decoration:none;color:var(--bronze);font-size:14px;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
@@ -488,8 +495,8 @@ footer a:hover{color:var(--ink)}
       <a href="#kontakty">Контакты</a>
     </nav>
     <div class="topright">
-      <a class="tel" href="tel:+74950000000"><span class="tel-full">+7 495 000-00-00</span><span class="tel-short">+7 495</span></a>
-      <button class="burger" id="burger" aria-label="Меню">Меню</button>
+      <a class="tel" href="tel:+74950000000" aria-label="Позвонить"><span class="tel-full">+7 495 000-00-00</span><span class="tel-short" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span></a>
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     </div>
   </div>
   <nav class="mobile" id="mnav" aria-label="Разделы">
@@ -517,7 +524,7 @@ footer a:hover{color:var(--ink)}
       <div class="creds"><div><b>20 лет</b><small>в недвижимости</small></div><div><b>12 000+</b><small>сделок команды</small></div><div><b>Москва</b><small>бизнес и премиум</small></div></div>
     </div>
   </section>
-  <div class="byline"><div class="wrap"><img src="{{PORTRAIT}}" alt=""><div><b>Елена Прохорова</b><span>Основатель Прохорова Select · 20 лет в недвижимости</span></div><button class="lnk" data-scroll="about">Об Елене ↓</button></div></div>
+  <div class="byline"><div class="wrap" data-scroll="about"><img src="{{PORTRAIT}}" alt=""><div><b>Елена Прохорова</b><span>Основатель Прохорова Select · 20 лет в недвижимости</span></div><button class="lnk" data-scroll="about">Об Елене ↓</button></div></div>
 
   <section class="wrap tiles" style="padding-top:56px">
     <div class="split" style="margin-top:0">
